@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
-import Navbar from "../components/Navbar/Navbar";
+
 import Footer from "../components/Footer/Footer";
 import { QUESTIONS, calculateTotalEmissions, type EmissionOption } from "../../../utils/emissionsConstants";
 import { apiRequest } from "../../../utils/request";
@@ -890,7 +890,7 @@ export default function CalculadoraPage() {
   if (showResults) {
     return (
       <div className="min-h-screen overflow-hidden">
-        <Navbar />
+        
         <div className="relative min-h-screen pt-8 lg:pt-12 pb-4 flex items-center justify-center">
           {/* Fondo y gradientes */}
           <div className="absolute inset-0 bg-teal-lighter" />
@@ -1179,7 +1179,7 @@ export default function CalculadoraPage() {
 
     return (
       <div className="min-h-screen">
-        <Navbar />
+        
         <div className="pt-16 pb-4 px-4 sm:px-5 lg:px-8 min-h-screen flex items-center justify-center relative">
           {/* Fondo verde original restaurado */}
           <div className="absolute inset-0 bg-teal-lighter" />
@@ -1513,7 +1513,7 @@ export default function CalculadoraPage() {
   if (showCalculator && !showQuestions && !showResults) {
     return (
       <div className="min-h-screen">
-        <Navbar />
+        
         <div className="pt-16 pb-4 px-4 sm:px-5 lg:px-8 min-h-screen flex items-center justify-center relative">
           {/* Fondo verde original restaurado */}
           <div className="absolute inset-0 bg-teal-lighter" />
@@ -1805,7 +1805,7 @@ export default function CalculadoraPage() {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      
       
       {/* Hero Section with Gradient Background */}
       <div className="relative min-h-screen pt-16 lg:pt-[100px]">

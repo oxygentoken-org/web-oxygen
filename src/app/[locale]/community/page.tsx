@@ -4,8 +4,7 @@ import Blog_Post from "../components/Blog/Blog_Post";
 
 async function getPosts(page: number = 0) {
   const key = process.env.SEOBOT_API_KEY;
-  console.log('🔑 SEOBOT_API_KEY:', key ? 'SET' : 'NOT SET');
-  
+
   if (!key) {
     console.error('SEOBOT_API_KEY environment variable must be set');
     return { articles: [], total: 0 };
@@ -14,7 +13,6 @@ async function getPosts(page: number = 0) {
   try {
     const client = new BlogClient(key);
     const result = await client.getArticles(page, 10);
-    console.log('📊 API Result:', { articlesCount: result.articles?.length || 0, total: result.total });
     return result;
   } catch (error) {
     console.error('❌ Error fetching posts:', error);

@@ -1,5 +1,5 @@
 "use client";
-import Navbar from "../components/Navbar/Navbar";
+
 import Footer from "../components/Footer/Footer";
 import "../../../styles/comprar.css";
 import "../globals.css";
@@ -14,7 +14,7 @@ const Comprar = () => {
   const projectIdioms = useTranslations("Project");
   return (
     <>
-      <Navbar />
+      
       <section className="buyTokens">
         <div className="buyTokensLayout">
           <h1>{buyIdioms("title")}</h1>
