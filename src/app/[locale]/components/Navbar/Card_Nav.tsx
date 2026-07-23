@@ -92,8 +92,7 @@ const Card_Nav: React.FC<CardNavProps> = ({
         { label: t("dashboard"), href: `/${locale}/dashboard`, ariaLabel: t("dashboard") },
         { label: t("logout"), href: "#", ariaLabel: t("logout") }
       ] : [
-        { label: t("login"), href: "/login?panel=login", ariaLabel: t("login") },
-        { label: t("buy"), href: "/comprar", ariaLabel: t("buy") }
+        { label: t("login"), href: "/login?panel=login", ariaLabel: t("login") }
       ]
     }
   ];
