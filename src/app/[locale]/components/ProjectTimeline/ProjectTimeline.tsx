@@ -7,7 +7,7 @@ import "./timeline.css";
 
 import imgMensura from "../../../../../public/assets/images/DronLaFlorencia.webp";
 import imgComunidad from "../../../../../public/assets/images/hector.png";
-import imgAgua from "../../../../../public/assets/images/forest.jpg";
+import imgAgua from "../../../../../public/assets/images/cisterna-mistolar-terminada-oct2025.jpg";
 import imgVivienda from "../../../../../public/assets/images/forest-vertical.jpg";
 import imgAsamblea from "../../../../../public/assets/images/hector.png";
 import imgOfpPiloto from "../../../../../public/assets/images/forest-hd-bg.jpg";
@@ -19,12 +19,13 @@ interface Milestone {
   image: StaticImageData;
 }
 
+// Orden cronológico por fecha real del hito (no por número de key)
 const MILESTONES: Milestone[] = [
   { key: "m1", image: imgMensura },
   { key: "m2", image: imgComunidad },
-  { key: "m3", image: imgAgua },
   { key: "m4", image: imgVivienda },
   { key: "m5", image: imgAsamblea },
+  { key: "m3", image: imgAgua },
   { key: "m6", image: imgOfpPiloto },
   { key: "m7", image: imgOfpFull },
   { key: "m8", image: imgVerra },
