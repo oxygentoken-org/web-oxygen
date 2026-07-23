@@ -4,6 +4,7 @@
 
 import Footer from "../components/Footer/Footer";
 import Project from "../components/Project/Project.js";
+import ProjectTimeline from "../components/ProjectTimeline/ProjectTimeline";
 
 //Styles
 import "../../../styles/proyecto.css";
@@ -60,6 +61,7 @@ const Proyectos = () => {
               btnLink="https://earth.google.com/web/@-24.20128471,-61.90184657,178.65665461a,50698.09743483d,30y,0h,0t,0r/data=OgMKATA"
             /> */}
           </div>
+          <ProjectTimeline />
         </div>
       </section>
       <Footer />
