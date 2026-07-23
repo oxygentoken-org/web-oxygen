@@ -11,19 +11,19 @@ export function Tokens() {
       logo: <TokenIcon />,
       title: issuedtokens("issued-token-1-title"),
       text: issuedtokens("issued-token-1-text"),
-      link: "",
+      link: "/whitepaper",
     },
     {
       logo: <OMTokenIcon />,
       title: issuedtokens("issued-token-2-title"),
       text: issuedtokens("issued-token-2-text"),
-      link: "",
+      link: "/whitepaper",
     },
     {
       logo: <OCTokenIcon />,
       title: issuedtokens("issued-token-3-title"),
       text: issuedtokens("issued-token-3-text"),
-      link: "",
+      link: "/whitepaper",
     },
   ] as const;
 

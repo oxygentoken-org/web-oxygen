@@ -20,6 +20,7 @@ export function ServiceCard({
   link,
   buttonText,
 }: Props) {
+  const isExternal = link.startsWith("http");
   return (
     <div className="[perspective:1000px] transform-gpu group drop-shadow-md">
       <div className="relative w-60 h-96 transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
@@ -42,8 +43,7 @@ export function ServiceCard({
 
           <LinkButton
             href={link}
-            target="_blank"
-            rel="noreferrer"
+            {...(isExternal ? { target: "_blank", rel: "noreferrer" } : {})}
             rounded="full"
             variant="large"
             className="mt-auto mb-2 border border-current bg-transparent hover:bg-white/30 text-center bg-gradient-to-r from-white/30 to-transparent"

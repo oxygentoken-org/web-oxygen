@@ -39,21 +39,27 @@ const TeamMember = ({
             <p>{description}</p>
           </div>
           <div className="teamMemberContact">
-            <a href={linkLin} target="_blank" rel="noopener noreferrer">
-              <div className="logoContact">
-                <FaLinkedin size={20} />
-              </div>
-            </a>
-            <a href={linkIg} target="_blank" rel="noopener noreferrer">
-              <div className="logoContact">
-                <FaInstagram size={20} />
-              </div>
-            </a>
-            <a href={linkTw} target="_blank" rel="noopener noreferrer">
-              <div className="logoContact">
-                <FaTwitter size={20} />
-              </div>
-            </a>
+            {linkLin ? (
+              <a href={linkLin} target="_blank" rel="noopener noreferrer">
+                <div className="logoContact">
+                  <FaLinkedin size={20} />
+                </div>
+              </a>
+            ) : null}
+            {linkIg ? (
+              <a href={linkIg} target="_blank" rel="noopener noreferrer">
+                <div className="logoContact">
+                  <FaInstagram size={20} />
+                </div>
+              </a>
+            ) : null}
+            {linkTw ? (
+              <a href={linkTw} target="_blank" rel="noopener noreferrer">
+                <div className="logoContact">
+                  <FaTwitter size={20} />
+                </div>
+              </a>
+            ) : null}
           </div>
         </div>
       </div>

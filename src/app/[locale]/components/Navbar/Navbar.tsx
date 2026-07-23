@@ -146,6 +146,8 @@ function Navbar() {
           <button
             className="p-2 rounded-full hover:bg-white/10 transition-colors mobile-menu-button"
             onClick={() => setMobileNavOpen(!mobileNavOpen)}
+            aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileNavOpen}
           >
             {mobileNavOpen ? (
               <PiXBold className="text-xl text-white" />
