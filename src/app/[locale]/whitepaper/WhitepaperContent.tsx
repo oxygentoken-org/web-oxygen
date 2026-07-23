@@ -20,6 +20,10 @@ import pachamaIcon from "../../../../public/assets/images/pachama.png";
 import logloClima from "../../../../public/assets/images/logo-cli.jpg";
 import impactImage from "../../../../public/assets/images/TripleImpact.png";
 import roadmapImage from "../../../../public/assets/images/Roadmap.png";
+import marketGrowthImage from "../../../../public/assets/images/image4.png";
+import marketDemandImage from "../../../../public/assets/images/image3.png";
+import footnoteImage2 from "../../../../public/assets/images/image2.png";
+import footnoteImage1 from "../../../../public/assets/images/image1.png";
 
 import { whitepaperContent } from "./content";
 
@@ -328,10 +332,10 @@ const WhitepaperContent = () => {
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   className="w-full max-w-2xl mx-auto my-10"
                 >
-                  <img
-                    src="/assets/images/image4.png"
+                  <Image
+                    src={marketGrowthImage}
                     alt={c.marketAnalysis.growthImageAlt}
-                    className="w-full rounded-xl shadow-lg"
+                    className="w-full h-auto rounded-xl shadow-lg"
                   />
                 </motion.div>
 
@@ -361,10 +365,10 @@ const WhitepaperContent = () => {
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   className="w-full max-w-2xl mx-auto my-10"
                 >
-                  <img
-                    src="/assets/images/image3.png"
+                  <Image
+                    src={marketDemandImage}
                     alt={c.marketAnalysis.demandImageAlt}
-                    className="w-full rounded-xl shadow-lg"
+                    className="w-full h-auto rounded-xl shadow-lg"
                   />
                 </motion.div>
               </section>,
@@ -779,8 +783,8 @@ const WhitepaperContent = () => {
                       transition={{ duration: 0.6, ease: "easeOut" }}
                       className="w-full md:max-w-2xl mx-auto my-6"
                     >
-                      <img
-                        src="/assets/images/image2.png"
+                      <Image
+                        src={footnoteImage2}
                         alt={c.footnotes.fn5ImageAlt}
                         className="w-full h-auto max-w-none object-contain "
                       />
@@ -795,8 +799,8 @@ const WhitepaperContent = () => {
                       transition={{ duration: 0.6, ease: "easeOut" }}
                       className="w-full md:max-w-2xl mx-auto my-6"
                     >
-                      <img
-                        src="/assets/images/image1.png"
+                      <Image
+                        src={footnoteImage1}
                         alt={c.footnotes.fn5Image2Alt}
                         className="w-full h-auto max-w-none object-contain"
                       />

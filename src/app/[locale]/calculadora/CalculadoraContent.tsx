@@ -2,7 +2,9 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
+import NextImage from "next/image";
 
+import oxygenLogo from "../../../../public/assets/images/logo.png";
 import Footer from "../components/Footer/Footer";
 import { QUESTIONS, calculateTotalEmissions, type EmissionOption } from "../../../utils/emissionsConstants";
 import { apiRequest } from "../../../utils/request";
@@ -245,9 +247,9 @@ function ProgressModal({
         <div className="text-center">
           {/* Logo de Oxygen */}
           <div className="w-full max-w-[200px] sm:max-w-[240px] h-auto mx-auto mb-6 flex items-center justify-center">
-            <img 
-              src="/assets/images/logo.png" 
-              alt="Oxygen Logo" 
+            <NextImage
+              src={oxygenLogo}
+              alt="Oxygen Logo"
               className="w-full h-auto object-contain"
             />
           </div>

@@ -5,6 +5,7 @@ import Scroll_To_Top from "../../components/Blog/Scroll_To_Top";
 import Footer from "../../components/Footer/Footer";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 async function getPost(slug: string) {
   const key = process.env.SEOBOT_API_KEY;
@@ -135,10 +136,12 @@ export default async function SEObotBlogPostPage({ params }: SEObotBlogPostPageP
             
             {post.image && (
               <div className="relative w-full rounded-lg overflow-hidden mb-6 aspect-[16/9]">
-                <img
+                <Image
                   src={post.image}
                   alt={post.headline}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  className="object-cover"
                 />
               </div>
             )}
@@ -188,8 +191,14 @@ export default async function SEObotBlogPostPage({ params }: SEObotBlogPostPageP
                   href={`/community/${m.slug}`}
                   className="group rounded-xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors"
                 >
-                  <div className="h-40 w-full overflow-hidden">
-                    <img src={m.image || '/assets/images/forest.jpg'} alt={m.headline} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <div className="relative h-40 w-full overflow-hidden">
+                    <Image
+                      src={m.image || '/assets/images/forest.jpg'}
+                      alt={m.headline}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 400px"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
                   <div className="p-4">
                     <h3 className="text-white font-semibold text-lg line-clamp-2">{m.headline}</h3>
