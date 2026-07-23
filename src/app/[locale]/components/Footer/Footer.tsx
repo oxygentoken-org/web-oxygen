@@ -3,19 +3,17 @@ import { useTranslations } from "next-intl";
 
 import logo from "../../../../../public/assets/images/logo.png";
 import {
-  PiArrowUpBold,
   PiInstagramLogo,
   PiTwitterLogo,
   PiYoutubeLogo,
 } from "react-icons/pi";
 import { FaLinkedinIn } from "react-icons/fa6";
-import { Button, LinkButton } from "../ui/Button2";
-import { InputWithLabel } from "../ui/InputWithLabel";
+import NewsletterForm from "./NewsletterForm";
 
 const socials = [
   {
     name: "instagram",
-    href: "https://instagram.com/oxygen.token",
+    href: "https://www.instagram.com/oxygen.token/",
     icon: <PiInstagramLogo />,
   },
   {
@@ -67,6 +65,7 @@ function Footer() {
                   className="rounded-full h-10 w-10 bg-white/10 text-white grid place-items-center text-2xl/none hover:bg-white/20 transition-colors"
               key={social.name}
               href={social.href}
+              aria-label={social.name}
               target="_blank"
               rel="noreferrer"
             >
@@ -102,20 +101,7 @@ function Footer() {
 
           <div className="flex flex-col gap-4">
             <h3 className="text-lg font-semibold tracking-tight">{t("news")}</h3>
-            <form className="flex items-center gap-3">
-          <InputWithLabel
-            variant="large"
-            rounded="full"
-            className="grow"
-                inputClassName="bg-white/10 backdrop-blur-md border-white/15 hover:bg-white/15 focus:bg-white/15 shadow-inner"
-            label=""
-            id="newsletterMail"
-            placeholder="Mail"
-          />
-              <Button variant="large" rounded="full" type="submit">
-            {t("news-button")}
-          </Button>
-        </form>
+            <NewsletterForm />
             <div>
               <h4 className="text-lg font-semibold tracking-tight mb-3">Legal</h4>
               <ul className="flex gap-6 text-white/80">
