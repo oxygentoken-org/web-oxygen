@@ -20,6 +20,20 @@ async function getPosts(page: number = 0) {
   }
 }
 
+export const metadata = {
+  title: "Community",
+  description:
+    "News, guides and stories about carbon markets, forest conservation and the Oxygen Token ecosystem.",
+  alternates: { canonical: "/community" },
+  openGraph: {
+    title: "Community",
+    description:
+      "News, guides and stories about carbon markets, forest conservation and the Oxygen Token ecosystem.",
+    url: "/community",
+    type: "website",
+  },
+};
+
 export default async function SEObot_Blog_Page() {
   const t = await getTranslations("Blog");
   const { articles, total } = await getPosts(0);
