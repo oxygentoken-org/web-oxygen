@@ -72,7 +72,7 @@ const Card_Nav: React.FC<CardNavProps> = ({
       links: [
         { label: t("home"), href: "/", ariaLabel: t("home") },
         { label: t("us"), href: "/nosotros", ariaLabel: t("us") },
-        { label: t("community"), href: "/blog", ariaLabel: t("community") }
+        { label: t("community"), href: "/community", ariaLabel: t("community") }
       ]
     },
     {
