@@ -393,7 +393,7 @@ const es: WhitepaperCopy = {
     para2Pre: "Una industria en la que ",
     para2Bold: "el 72% de los créditos emitidos se venden",
     para2Post:
-      ", mientras la producción disminuye y las retiraciones (demanda) aumentan. En 2024 se emitieron 264 millones de créditos y se vendieron 196 millones. La demanda de créditos de alta calidad y verificados supera a la oferta, especialmente debido a políticas ambientales más estrictas.",
+      ", mientras la producción disminuye y los retiros (demanda) aumentan. En 2024 se emitieron 264 millones de créditos y se vendieron 196 millones. La demanda de créditos de alta calidad y verificados supera a la oferta, especialmente debido a políticas ambientales más estrictas.",
     para3:
       "América Latina presenta una oportunidad única: generación de créditos de carbono de bajo costo y alto impacto gracias a sus vastas reservas forestales. Muchos propietarios de tierras prefieren este camino frente a prácticas destructivas como la deforestación o la ganadería.",
     keyInsightsLabel: "Conclusiones clave:",
