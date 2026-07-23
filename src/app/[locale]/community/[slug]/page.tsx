@@ -49,6 +49,34 @@ interface SEObotBlogPostPageProps {
   };
 }
 
+export async function generateMetadata({ params }: SEObotBlogPostPageProps) {
+  const post = await getPost(params.slug);
+  if (!post) return {};
+
+  const title = post.headline;
+  const description = post.metaDescription || post.headline;
+  const canonical = `/community/${params.slug}`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      type: "article",
+      ...(post.image ? { images: [{ url: post.image }] } : {}),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      ...(post.image ? { images: [post.image] } : {}),
+    },
+  };
+}
+
 export default async function SEObotBlogPostPage({ params }: SEObotBlogPostPageProps) {
   const t = await getTranslations("Blog");
   const post = await getPost(params.slug);

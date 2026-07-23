@@ -14,9 +14,21 @@ const { NextIntlClientProvider } = require("next-intl");
 const { notFound } = require("next/navigation");
 
 export const metadata = {
-  title: "Oxygen Token",
-  description: "Landing page Oxygen",
-  icon: "../favicon.ico",
+  metadataBase: new URL("https://oxygentoken.org"),
+  title: {
+    default: "Oxygen Token",
+    template: "%s | Oxygen Token",
+  },
+  description:
+    "Oxygen turns verified forest conservation into on-chain carbon credits. Offset your footprint and fund the protection of native forests in Argentina.",
+  icons: { icon: "/favicon.ico" },
+  openGraph: {
+    siteName: "Oxygen Token",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 function generateStaticParams() {
