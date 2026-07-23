@@ -30,7 +30,7 @@ const socials = [
   },
   {
     name: "twitter",
-    href: "/",
+    href: "https://x.com/Oxygen_Token",
     icon: <PiTwitterLogo />,
   },
 ] as const;
@@ -38,8 +38,8 @@ const socials = [
 const links = [
   { key: "us-link", href: "/nosotros" },
   { key: "projects-link", href: "/proyectos" },
-  { key: "contact-link", href: "/contacto" },
-  { key: "joinus-link", href: "/joinus" },
+  { key: "contact-link", href: "mailto:oxygen@oxygentoken.org" },
+  { key: "joinus-link", href: "/register" },
 ] as const;
 
 const resources = [
@@ -50,7 +50,6 @@ const resources = [
 
 const legal = [
   { label: "Privacy", href: "/privacy" },
-  { label: "Terms", href: "/terms" },
 ] as const;
 
 function Footer() {
