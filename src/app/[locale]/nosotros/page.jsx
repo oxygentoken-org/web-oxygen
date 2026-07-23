@@ -1,7 +1,7 @@
 "use client";
 
 //Componentes
-import Navbar from "../components/Navbar/Navbar";
+
 import Footer from "../components/Footer/Footer";
 import TeamMember from "../components/TeamMember/TeamMember.js";
 import Team_Carousel from "../components/TeamMember/Team_Carousel.js";
@@ -174,7 +174,7 @@ const Nosotros = () => {
         <title>Oxygen Token</title>
         <meta name="description" content="Oxygen-Token" />
       </Head>
-      <Navbar />
+      
       <section className="thisIsOxygen">
         <h1>{usIdioms("title")}</h1>
         <div className="misionVision">

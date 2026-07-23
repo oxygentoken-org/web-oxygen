@@ -1,7 +1,7 @@
 "use client";
 
 //Components
-import Navbar from "../components/Navbar/Navbar";
+
 import Footer from "../components/Footer/Footer";
 import Project from "../components/Project/Project.js";
 
@@ -26,7 +26,7 @@ const Proyectos = () => {
   const projectIdioms = useTranslations("Project");
   return (
     <>
-      <Navbar />
+      
       <section className="project">
         <div className="projectHeader">
           <div className="mapBackground">

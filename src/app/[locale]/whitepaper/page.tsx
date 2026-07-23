@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Children, isValidElement } from "react";
 import { motion } from "framer-motion";
-import Navbar from "../components/Navbar/Navbar";
+
 import Footer from "../components/Footer/Footer";
 import Image from "next/image";
 import issuerIcon from "../../../../public/assets/images/issuer.png";
@@ -56,7 +56,7 @@ const Whitepaper_Page = () => {
 
   return (
     <>
-      <Navbar />
+      
       <div className="flex flex-col md:flex-row min-h-screen scroll-smooth">
         <aside className="hidden md:block sticky top-[100px] overflow-x-hidden lg:top-[120px] w-full md:w-1/4 border-r border-gray-200 p-6 h-screen overflow-y-auto bg-white z-10">
           <nav className="space-y-3">
