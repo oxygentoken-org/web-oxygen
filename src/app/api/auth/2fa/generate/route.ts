@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { getBackendUrl } from "../../../../../utils/backendConfig";
 
 export async function POST(req: Request) {
-  console.log("📥 2FA Generate API Route called");
   try {
     const cookies = req.headers.get("cookie") || "";
     const cookieMap = Object.fromEntries(
@@ -11,10 +10,6 @@ export async function POST(req: Request) {
 
     const body = await req.json();
     const { email } = body;
-    
-    console.log("📦 Request body received:", {
-      hasEmail: !!email,
-    });
 
     if (!email) {
       console.error("❌ Missing email");
@@ -25,8 +20,7 @@ export async function POST(req: Request) {
     }
 
     const backendUrl = getBackendUrl("/auth/2fa/generate");
-    console.log("🔗 Forwarding 2FA generate request to backend:", backendUrl);
-    
+
     const generateResponse = await fetch(backendUrl, {
       method: "POST",
       headers: {
@@ -38,11 +32,9 @@ export async function POST(req: Request) {
       }),
     });
 
-    console.log("📥 Backend response status:", generateResponse.status);
-
     if (!generateResponse.ok) {
       const errorData = await generateResponse.json().catch(() => ({}));
-      console.error("❌ Backend error:", errorData);
+      console.error("❌ Backend error generating 2FA:", generateResponse.status);
       return NextResponse.json(
         { error: errorData.error || "Failed to generate 2FA code", success: false },
         { status: generateResponse.status }
@@ -50,8 +42,7 @@ export async function POST(req: Request) {
     }
 
     const generateData = await generateResponse.json();
-    console.log("✅ 2FA code generated successfully");
-    
+
     return NextResponse.json({
       success: true,
       message: generateData.message || "2FA code sent to your email",

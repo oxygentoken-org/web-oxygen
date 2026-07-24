@@ -15,8 +15,6 @@ export async function POST(req: NextRequest) {
     // Obtener la URL del backend
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "https://backend-render-7vh2.onrender.com";
 
-    console.log("🔐 Setting session with backend:", backendUrl);
-
     // Hacer la petición al backend
     const backendResponse = await fetch(`${backendUrl}/set-session`, {
       method: "POST",
@@ -31,14 +29,12 @@ export async function POST(req: NextRequest) {
     const responseData = await backendResponse.json();
 
     if (!backendResponse.ok) {
-      console.error("❌ Backend set-session failed:", backendResponse.status, responseData);
+      console.error("❌ Backend set-session failed:", backendResponse.status);
       return NextResponse.json(
         { success: false, error: responseData.error || "Failed to set session" },
         { status: backendResponse.status }
       );
     }
-
-    console.log("✅ Backend set-session successful");
 
     // Crear la respuesta de Next.js
     const response = NextResponse.json(
@@ -53,8 +49,6 @@ export async function POST(req: NextRequest) {
     const setCookieHeaders = backendResponse.headers.getSetCookie();
 
     if (setCookieHeaders && setCookieHeaders.length > 0) {
-      console.log(`🍪 Forwarding ${setCookieHeaders.length} cookies from backend`);
-
       setCookieHeaders.forEach((cookieString) => {
         // Parse the cookie string
         const parts = cookieString.split(';').map(part => part.trim());
@@ -101,8 +95,6 @@ export async function POST(req: NextRequest) {
           cookieOptions.secure = true;
           cookieOptions.sameSite = cookieOptions.sameSite || 'lax';
         }
-
-        console.log(`🍪 Setting cookie: ${name}`);
 
         // Set the cookie
         response.cookies.set(name, value, cookieOptions);

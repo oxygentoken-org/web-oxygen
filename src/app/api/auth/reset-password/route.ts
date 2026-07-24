@@ -21,8 +21,6 @@ export async function POST(req: NextRequest) {
 
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "https://backend-render-7vh2.onrender.com";
 
-    console.log("🔑 Proxying reset-password request to backend:", backendUrl);
-
     const backendResponse = await fetch(`${backendUrl}/reset-password`, {
       method: "POST",
       headers: {
@@ -35,14 +33,12 @@ export async function POST(req: NextRequest) {
     const responseData = await backendResponse.json();
 
     if (!backendResponse.ok) {
-      console.error("❌ Backend reset-password failed:", backendResponse.status, responseData);
+      console.error("❌ Backend reset-password failed:", backendResponse.status);
       return NextResponse.json(
         { success: false, error: responseData.error || "Reset failed" },
         { status: backendResponse.status }
       );
     }
-
-    console.log("✅ Password reset successfully");
 
     return NextResponse.json(
       {

@@ -5,8 +5,6 @@ export async function GET(req: NextRequest) {
     // Obtener la URL del backend
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "https://backend-render-7vh2.onrender.com";
 
-    console.log("🔍 Checking session with backend:", backendUrl);
-
     // Obtener todas las cookies del request
     const cookieHeader = req.headers.get("cookie") || "";
 
@@ -24,14 +22,11 @@ export async function GET(req: NextRequest) {
     const responseData = await backendResponse.json();
 
     if (!backendResponse.ok) {
-      console.log("❌ Session check failed:", backendResponse.status);
       return NextResponse.json(
         { loggedIn: false },
         { status: 401 }
       );
     }
-
-    console.log("✅ Session valid:", responseData.loggedIn);
 
     // Devolver los datos de la sesión
     return NextResponse.json(responseData, { status: 200 });

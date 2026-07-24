@@ -19,8 +19,6 @@ export async function POST(req: NextRequest) {
     const cookieStore = await cookies();
     const authCookie = cookieStore.get("auth_token");
 
-    console.log("🎁 Proxying claim-oms request to backend:", backendUrl);
-
     const backendResponse = await fetch(`${backendUrl}/claim-oms`, {
       method: "POST",
       headers: {
@@ -34,14 +32,12 @@ export async function POST(req: NextRequest) {
     const responseData = await backendResponse.json();
 
     if (!backendResponse.ok) {
-      console.error("❌ Backend claim-oms failed:", backendResponse.status, responseData);
+      console.error("❌ Backend claim-oms failed:", backendResponse.status);
       return NextResponse.json(
         { success: false, error: responseData.error || "CLAIM_FAILED" },
         { status: backendResponse.status }
       );
     }
-
-    console.log("✅ OMs claimed successfully:", responseData);
 
     return NextResponse.json(
       {
