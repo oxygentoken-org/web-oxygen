@@ -1,6 +1,8 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 export default function Carbon_Neutral_Panel() {
+  const t = useTranslations("Dashboard.burn.carbonNeutral");
   return (
     <div className="h-full flex flex-col items-center justify-center p-0">
       <div className="w-full max-w-md mx-auto px-4 flex flex-col items-center gap-2">
@@ -9,7 +11,7 @@ export default function Carbon_Neutral_Panel() {
         </div>
         
         <p className="text-white text-center text-xs mb-2">
-          ¡Hoy sos carbono neutral, compartí tu certificado en las redes sociales!
+          {t("shareMessage")}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full">
@@ -20,7 +22,7 @@ export default function Carbon_Neutral_Panel() {
             </svg>
           </div>
           <div className="flex-1 bg-teal-600 px-2 sm:px-3 py-2 sm:py-2.5">
-            <span className="text-white font-medium text-xs sm:text-sm">Publicá en Instagram</span>
+            <span className="text-white font-medium text-xs sm:text-sm">{t("postInstagram")}</span>
           </div>
         </button>
 
@@ -31,7 +33,7 @@ export default function Carbon_Neutral_Panel() {
             </svg>
           </div>
           <div className="flex-1 bg-teal-600 px-2 sm:px-3 py-2 sm:py-2.5">
-            <span className="text-white font-medium text-xs sm:text-sm">Publicá en LinkedIn</span>
+            <span className="text-white font-medium text-xs sm:text-sm">{t("postLinkedin")}</span>
           </div>
         </button>
 
@@ -42,7 +44,7 @@ export default function Carbon_Neutral_Panel() {
             </svg>
           </div>
           <div className="flex-1 bg-teal-600 px-2 sm:px-3 py-2 sm:py-2.5">
-            <span className="text-white font-medium text-xs sm:text-sm">Publicá en Twitter</span>
+            <span className="text-white font-medium text-xs sm:text-sm">{t("postTwitter")}</span>
           </div>
         </button>
         </div>

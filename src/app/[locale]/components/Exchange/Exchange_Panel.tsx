@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { PiArrowsDownUp, PiQuestion } from "react-icons/pi";
 
 export default function Exchange_Panel() {
-  const [payAmount, setPayAmount] = useState("0000");
-  const [receiveAmount, setReceiveAmount] = useState("0000");
+  const t = useTranslations("Dashboard.exchange");
+  const [payAmount, setPayAmount] = useState("0");
+  const [receiveAmount, setReceiveAmount] = useState("0");
   const [payCurrency, setPayCurrency] = useState("OM");
   const [receiveCurrency, setReceiveCurrency] = useState("USDT");
   const [rotation, setRotation] = useState(0);
@@ -24,13 +26,13 @@ export default function Exchange_Panel() {
   return (
     <div className="h-full flex flex-col justify-between">
       <h2 className="text-white text-lg sm:text-xl font-semibold text-center mb-4 sm:mb-6">
-        Intercambiar Token
+        {t("title")}
       </h2>
 
       <div className="flex-1 flex flex-col justify-between">
         <div className="flex flex-col space-y-4 sm:space-y-6">
           <div className="space-y-2">
-          <label className="text-white/70 text-sm">Pagá</label>
+          <label className="text-white/70 text-sm">{t("pay")}</label>
           <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 flex items-center overflow-hidden">
             <input
               type="text"
@@ -62,7 +64,7 @@ export default function Exchange_Panel() {
         </div>
 
         <div className="space-y-2">
-          <label className="text-white/70 text-sm">Recibí</label>
+          <label className="text-white/70 text-sm">{t("receive")}</label>
           <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 flex items-center overflow-hidden">
             <input
               type="text"
@@ -82,28 +84,28 @@ export default function Exchange_Panel() {
 
           <div className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-3 sm:p-4 space-y-3 sm:space-y-4 mt-3 sm:mt-4">
             <div className="flex justify-between items-center">
-              <span className="text-white/70 text-sm">Tasa de cambio</span>
-              <span className="text-white text-sm">1 USDT=0000 OM</span>
+              <span className="text-white/70 text-sm">{t("exchangeRate")}</span>
+              <span className="text-white text-sm">1 USDT=0 OM</span>
             </div>
-            
+
             <div className="flex justify-between items-center">
-              <span className="text-white/70 text-sm">Precio</span>
-              <span className="text-white text-sm">0000 USDT / OM</span>
+              <span className="text-white/70 text-sm">{t("price")}</span>
+              <span className="text-white text-sm">0 USDT / OM</span>
             </div>
-            
+
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-1">
-                <span className="text-white/70 text-sm">Mínimo recibido</span>
+                <span className="text-white/70 text-sm">{t("minReceived")}</span>
                 <button className="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center">
                   <PiQuestion className="w-3 h-3 text-white/70" />
                 </button>
               </div>
-              <span className="text-white text-sm">0000 USDT</span>
+              <span className="text-white text-sm">0 USDT</span>
             </div>
-            
+
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-1">
-                <span className="text-white/70 text-sm">Impacto sobre los precios</span>
+                <span className="text-white/70 text-sm">{t("priceImpact")}</span>
                 <button className="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center">
                   <PiQuestion className="w-3 h-3 text-white/70" />
                 </button>
@@ -114,7 +116,7 @@ export default function Exchange_Panel() {
         </div>
 
         <button className="w-auto mx-auto px-12 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white font-semibold py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-teal-500/50 hover:scale-105 active:scale-95 border-2 border-white/20">
-          Intercambiar
+          {t("action")}
         </button>
       </div>
     </div>

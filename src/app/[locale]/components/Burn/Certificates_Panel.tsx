@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { PiCaretUpDown } from "react-icons/pi";
 
 const mockCertificates = [
@@ -9,9 +10,10 @@ const mockCertificates = [
 ];
 
 export default function Certificates_Panel() {
+  const t = useTranslations("Dashboard.burn");
   return (
     <div className="h-full flex flex-col">
-      <h2 className="text-white font-bold text-sm sm:text-base mb-1">Mis certificados</h2>
+      <h2 className="text-white font-bold text-sm sm:text-base mb-1">{t("myCertificates")}</h2>
       
       <div className="flex-1 overflow-hidden flex flex-col min-h-0">
         <div className="flex-shrink-0">
@@ -20,36 +22,36 @@ export default function Certificates_Panel() {
               <tr className="bg-[#539390] border-b border-white/20">
                 <th className="text-left py-1 px-2 text-white font-medium text-xs w-[12%]">
                   <div className="flex items-center gap-1">
-                    <span>Fecha</span>
+                    <span>{t("table.date")}</span>
                     <PiCaretUpDown className="w-3 h-3 text-white/70" />
                   </div>
                 </th>
                 <th className="text-left py-1 px-2 text-white font-medium text-xs w-[15%]">
                   <div className="flex items-center gap-1">
-                    <span>Nombre</span>
+                    <span>{t("table.name")}</span>
                     <PiCaretUpDown className="w-3 h-3 text-white/70" />
                   </div>
                 </th>
                 <th className="text-left py-1 px-2 text-white font-medium text-xs w-[15%]">
                   <div className="flex items-center gap-1">
-                    <span>Proyecto</span>
+                    <span>{t("table.project")}</span>
                     <PiCaretUpDown className="w-3 h-3 text-white/70" />
                   </div>
                 </th>
                 <th className="text-left py-1 px-2 text-white font-medium text-xs w-[18%]">
                   <div className="flex items-center gap-1">
-                    <span>Token quemados</span>
+                    <span>{t("table.burnedTokens")}</span>
                     <PiCaretUpDown className="w-3 h-3 text-white/70" />
                   </div>
                 </th>
                 <th className="text-left py-1 px-2 text-white font-medium text-xs w-[15%]">
                   <div className="flex items-center gap-1">
-                    <span>Cantidad</span>
+                    <span>{t("table.amount")}</span>
                     <PiCaretUpDown className="w-3 h-3 text-white/70" />
                   </div>
                 </th>
                 <th className="text-left py-1 px-2 text-white font-medium text-xs w-[25%]">
-                  <span>Acción</span>
+                  <span>{t("table.action")}</span>
                 </th>
               </tr>
             </thead>
@@ -70,7 +72,7 @@ export default function Certificates_Panel() {
                       <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                       </svg>
-                      <span>Descargar</span>
+                      <span>{t("table.download")}</span>
                     </button>
                   </td>
                 </tr>

@@ -14,7 +14,7 @@ export default function ComprarPage() {
   const pathname = usePathname();
   const projectName = searchParams.get("project") || "Proyecto";
   const locale = pathname.split("/")[1] || "en";
-  const t = useTranslations("Project");
+  const t = useTranslations("Dashboard.compensate");
 
   const handleBack = () => {
     router.push(`/${locale}/dashboard/compensar`);
@@ -66,18 +66,18 @@ export default function ComprarPage() {
 
   const stats = [
     {
-      title: "Hectáreas",
-      value: "150",
+      title: t("stats.hectares"),
+      value: "0",
       unit: "ha"
     },
     {
-      title: "CO₂ Compensado",
-      value: "2.500",
+      title: t("stats.co2Compensated"),
+      value: "0",
       unit: "tn"
     },
     {
-      title: "Árboles Protegidos",
-      value: "45.000",
+      title: t("stats.treesProtected"),
+      value: "0",
       unit: ""
     }
   ];
@@ -92,7 +92,7 @@ export default function ComprarPage() {
               className="flex items-center gap-2 text-white hover:text-white/80 transition-colors"
             >
               <PiArrowLeft className="w-5 h-5" />
-              <span className="underline text-base sm:text-lg">Atrás</span>
+              <span className="underline text-base sm:text-lg">{t("back")}</span>
             </button>
             <h1 className="text-white text-xl sm:text-2xl font-semibold">
               {decodeURIComponent(projectName)}
@@ -117,7 +117,7 @@ export default function ComprarPage() {
               </h2>
               
               <p className="text-white/80 text-base leading-7">
-                Este proyecto de conservación forestal se enfoca en proteger y preservar los ecosistemas nativos, contribuyendo directamente a la captura de carbono y la preservación de la biodiversidad. A través de esta iniciativa, estamos garantizando la protección permanente de áreas forestales críticas.
+                {t("projectDescription")}
               </p>
               
               <div className="flex flex-row gap-2 flex-shrink-0">
@@ -149,7 +149,7 @@ export default function ComprarPage() {
               <div className="flex-[0.5] flex-shrink-0 min-h-0 p-4 overflow-auto flex items-center justify-center">
                 <div className="w-full max-w-md bg-white rounded-xl p-6 shadow-lg">
                   <h3 className="text-teal-dark font-bold text-lg mb-6 text-center">
-                    ¿Cuántas tn de CO2 desea comprar?
+                    {t("quantityQuestion")}
                   </h3>
                   
                   <div className="mb-6">
@@ -157,7 +157,7 @@ export default function ComprarPage() {
                       type="text"
                       value={quantity}
                       onChange={handleQuantityChange}
-                      placeholder="Ingresa la cantidad"
+                      placeholder={t("quantityPlaceholder")}
                       className="compra-input w-full px-4 py-3 border border-teal-medium/30 rounded-lg focus:ring-2 focus:ring-teal-accent focus:border-teal-accent transition-all duration-100"
                       style={{ 
                         backgroundColor: 'white',
@@ -187,7 +187,7 @@ export default function ComprarPage() {
                       <span>USD {calculateTotal()}</span>
                     </div>
                     <div className="flex justify-between items-center text-teal-dark font-bold">
-                      <span>Total</span>
+                      <span>{t("total")}</span>
                       <span>USD {calculateTotal()}</span>
                     </div>
                   </div>
@@ -196,7 +196,7 @@ export default function ComprarPage() {
                     onClick={handleComprar}
                     className="w-full py-3 px-6 bg-teal-medium hover:bg-teal-dark text-white font-semibold rounded-lg transition-colors duration-200"
                   >
-                    Comprar
+                    {t("buy")}
                   </button>
                 </div>
               </div>

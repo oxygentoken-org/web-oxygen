@@ -3,6 +3,7 @@ import { useAuth } from "../../context/Auth_Context";
 import { useDev } from "../../context/Dev_Context";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect } from "react";
+import { useTranslations } from "next-intl";
 
 interface AuthLoadingProps {
   children: React.ReactNode;
@@ -15,6 +16,7 @@ const AuthLoading = ({ children, requireAuth = false, redirectTo = "/login" }: A
   const { isDevMode } = useDev();
   const router = useRouter();
   const pathname = usePathname();
+  const t = useTranslations("common");
   const locale = pathname.split("/")[1];
 
   useEffect(() => {
@@ -28,7 +30,7 @@ const AuthLoading = ({ children, requireAuth = false, redirectTo = "/login" }: A
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-teal-dark via-teal-medium to-teal">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-          <p className="text-white text-lg">Cargando...</p>
+          <p className="text-white text-lg">{t("loading")}</p>
         </div>
       </div>
     );

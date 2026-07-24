@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { PiCaretUpDown } from "react-icons/pi";
 
 const mockBurnHistory = [
@@ -13,9 +14,10 @@ const mockBurnHistory = [
 ];
 
 export default function Burn_History_Panel() {
+  const t = useTranslations("Dashboard.burn");
   return (
     <div className="h-full flex flex-col">
-      <h2 className="text-white font-bold text-lg sm:text-xl mb-4">Historial</h2>
+      <h2 className="text-white font-bold text-lg sm:text-xl mb-4">{t("history")}</h2>
       
       <div className="flex-1 overflow-hidden flex flex-col">
         <div className="flex-shrink-0">
@@ -24,25 +26,25 @@ export default function Burn_History_Panel() {
               <tr className="bg-[#539390] border-b border-white/20">
                 <th className="text-left py-2 px-2 sm:py-3 sm:px-4 text-white font-medium text-xs sm:text-sm w-[25%]">
                   <div className="flex items-center gap-1">
-                    <span>Fecha</span>
+                    <span>{t("table.date")}</span>
                     <PiCaretUpDown className="w-3 h-3 sm:w-4 sm:h-4 text-white/70" />
                   </div>
                 </th>
                 <th className="text-left py-2 px-2 sm:py-3 sm:px-4 text-white font-medium text-xs sm:text-sm w-[25%]">
                   <div className="flex items-center gap-1">
-                    <span>Cantidad</span>
+                    <span>{t("table.amount")}</span>
                     <PiCaretUpDown className="w-3 h-3 sm:w-4 sm:h-4 text-white/70" />
                   </div>
                 </th>
                 <th className="text-left py-2 px-2 sm:py-3 sm:px-4 text-white font-medium text-xs sm:text-sm w-[25%]">
                   <div className="flex items-center gap-1">
-                    <span>Créditos</span>
+                    <span>{t("table.credits")}</span>
                     <PiCaretUpDown className="w-3 h-3 sm:w-4 sm:h-4 text-white/70" />
                   </div>
                 </th>
                 <th className="text-left py-2 px-2 sm:py-3 sm:px-4 text-white font-medium text-xs sm:text-sm w-[25%]">
                   <div className="flex items-center gap-1">
-                    <span>Impacto</span>
+                    <span>{t("table.impact")}</span>
                     <PiCaretUpDown className="w-3 h-3 sm:w-4 sm:h-4 text-white/70" />
                   </div>
                 </th>

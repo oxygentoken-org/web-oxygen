@@ -24,7 +24,7 @@ const userDashboardData = {
     },
     {
       title: "m² salvados",
-      value: "5",
+      value: "0",
       icon: "/assets/images/imgTrees.jpg",
       description: "M² protegidos"
     }
@@ -34,33 +34,33 @@ const userDashboardData = {
       id: "1",
       name: "La Florencia",
       location: "Formosa",
-      price: "$15.00 / tnCO2",
+      price: "$0.00 / tnCO2",
       image: "/assets/images/forestHD.jpg",
       status: "active" as const
     }
   ],
   earnings: {
-    total: "$180.00",
+    total: "0",
     chartData: [
-      { month: "Ene", value: 50 },
-      { month: "Feb", value: 75 },
-      { month: "Mar", value: 100 },
-      { month: "Abr", value: 120 },
-      { month: "May", value: 140 },
-      { month: "Jun", value: 160 },
-      { month: "Jul", value: 175 },
-      { month: "Ago", value: 180 },
-      { month: "Sep", value: 185 },
-      { month: "Oct", value: 190 }
+      { month: "Ene", value: 0 },
+      { month: "Feb", value: 0 },
+      { month: "Mar", value: 0 },
+      { month: "Abr", value: 0 },
+      { month: "May", value: 0 },
+      { month: "Jun", value: 0 },
+      { month: "Jul", value: 0 },
+      { month: "Ago", value: 0 },
+      { month: "Sep", value: 0 },
+      { month: "Oct", value: 0 }
     ]
   },
   footprint: {
-    value: "2,50",
+    value: "0,00",
     unit: "tn CO₂",
     period: "año"
   },
   social: {
-    certificateValue: "48 M²",
+    certificateValue: "0 M²",
     socialPlatforms: [
       {
         name: "Instagram",

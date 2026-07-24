@@ -1,9 +1,11 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import { PiQuestion, PiArrowDown } from "react-icons/pi";
 import Image from "next/image";
 
 export default function Burn_Panel() {
+  const t = useTranslations("Dashboard.burn");
   const [burnAmount, setBurnAmount] = useState("0000");
   const [tokenType, setTokenType] = useState("OM");
   const [confirmed, setConfirmed] = useState(false);
@@ -33,13 +35,13 @@ export default function Burn_Panel() {
   return (
     <div className="h-full flex flex-col justify-between">
       <h2 className="text-white text-lg sm:text-xl font-semibold text-center mb-4 sm:mb-6">
-        Quemar Token
+        {t("title")}
       </h2>
 
       <div className="flex-1 flex flex-col justify-between">
         <div className="flex flex-col space-y-4 sm:space-y-6">
           <div className="space-y-2 relative">
-            <label className="text-white/70 text-sm">Cantidad a quemar</label>
+            <label className="text-white/70 text-sm">{t("amountToBurn")}</label>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 flex items-center">
               <input
                 type="text"
@@ -157,13 +159,13 @@ export default function Burn_Panel() {
 
           <div className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-3 sm:p-4 space-y-3 sm:space-y-4 mt-3 sm:mt-4">
             <div className="flex justify-between items-center">
-              <span className="text-white/70 text-sm">Token</span>
+              <span className="text-white/70 text-sm">{t("token")}</span>
               <span className="text-white text-sm">Token {tokenType} (0)</span>
             </div>
             
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-1">
-                <span className="text-white/70 text-sm">Tarifa de transacción</span>
+                <span className="text-white/70 text-sm">{t("transactionFee")}</span>
                 <button className="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center">
                   <PiQuestion className="w-3 h-3 text-white/70" />
                 </button>
@@ -173,7 +175,7 @@ export default function Burn_Panel() {
             
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-1">
-                <span className="text-white/70 text-sm">Tarifa de servicio</span>
+                <span className="text-white/70 text-sm">{t("serviceFee")}</span>
                 <button className="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center">
                   <PiQuestion className="w-3 h-3 text-white/70" />
                 </button>
@@ -191,7 +193,7 @@ export default function Burn_Panel() {
               className="w-4 h-4 rounded border-white/30 bg-white/10 text-teal-600 focus:ring-teal-500 focus:ring-2 cursor-pointer"
             />
             <label htmlFor="confirm-burn" className="text-white text-sm cursor-pointer">
-              Entiendo que esta operación no se puede deshacer
+              {t("irreversibleWarning")}
             </label>
           </div>
         </div>
@@ -202,7 +204,7 @@ export default function Burn_Panel() {
             !confirmed ? 'opacity-50 cursor-not-allowed' : ''
           }`}
         >
-          Confirmar
+          {t("confirm")}
         </button>
       </div>
     </div>
