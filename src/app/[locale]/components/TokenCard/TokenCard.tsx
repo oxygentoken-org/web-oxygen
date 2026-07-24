@@ -23,8 +23,9 @@ export function TokenCard({ title, text, logo, link }: Props) {
       <div className="mt-auto">
         <Link
           href={link}
-          target="_blank"
-          rel="noreferrer"
+          {...(link.startsWith("http")
+            ? { target: "_blank", rel: "noreferrer" }
+            : {})}
           className="text-teal-medium hover:underline font-bold decoration-2"
         >
           <div className="flex flex-row items-center gap-2">

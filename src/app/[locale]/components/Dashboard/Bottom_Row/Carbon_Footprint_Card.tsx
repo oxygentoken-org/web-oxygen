@@ -1,6 +1,6 @@
 "use client";
 import { memo } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { CarbonFootprintData } from "../types";
@@ -12,9 +12,10 @@ interface Carbon_Footprint_CardProps {
 const Carbon_Footprint_Card = memo(({ data }: Carbon_Footprint_CardProps) => {
   const router = useRouter();
   const t = useTranslations("Dashboard");
+  const locale = useLocale();
 
   const handleCalculateClick = () => {
-    router.push('/calculadora');
+    router.push(`/${locale}/calculadora`);
   };
 
   return (
