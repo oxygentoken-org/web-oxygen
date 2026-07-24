@@ -46,6 +46,7 @@ function sanitizeArticleHtml(html: string, headline: string): string {
 
 interface SEObotBlogPostPageProps {
   params: {
+    locale: string;
     slug: string;
   };
 }
@@ -87,8 +88,31 @@ export default async function SEObotBlogPostPage({ params }: SEObotBlogPostPageP
     notFound();
   }
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.headline,
+    description: post.metaDescription || post.headline,
+    ...(post.image ? { image: post.image } : {}),
+    ...(post.createdAt ? { datePublished: post.createdAt } : {}),
+    url: `https://oxygentoken.org/${params.locale}/community/${params.slug}`,
+    author: { "@type": "Organization", name: "Oxygen Token" },
+    publisher: {
+      "@type": "Organization",
+      name: "Oxygen Token",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://oxygentoken.org/assets/images/logo.png",
+      },
+    },
+  };
+
   return (
     <div className="min-h-screen relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <div className="fixed inset-0 z-0">
         <div 
           className="w-full h-full bg-no-repeat"
