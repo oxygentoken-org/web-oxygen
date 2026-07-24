@@ -238,7 +238,7 @@ function ProgressModal({
           <button
             onClick={handleClose}
             className="absolute top-4 right-4 text-gray-400 hover:text-teal-accent text-2xl font-bold focus:outline-none"
-            aria-label="Cerrar"
+            aria-label={t("progressModal.closeAria")}
             type="button"
           >
             ×
@@ -328,8 +328,8 @@ function ProgressModal({
             </p>
           </>}
           {modalState === 'thanks' && <>
-            <h3 className="text-2xl font-bold text-teal-dark mb-4 mt-4">¡Gracias por completar tus datos!</h3>
-            <p className="text-teal-medium mb-6">Tu progreso ha sido guardado. Continúa con la calculadora.</p>
+            <h3 className="text-2xl font-bold text-teal-dark mb-4 mt-4">{t("progressModal.thanksTitle")}</h3>
+            <p className="text-teal-medium mb-6">{t("progressModal.thanksDescription")}</p>
           </>}
         </div>
       </div>
@@ -920,7 +920,7 @@ export default function CalculadoraPage() {
                       {animatedEmissions.toFixed(1)}
                     </div>
                     <div className="text-base sm:text-lg text-teal-dark">
-                      toneladas CO₂e/año
+                      {t("results.unit")}
                     </div>
                   </div>
                   
@@ -930,15 +930,15 @@ export default function CalculadoraPage() {
                       {t("results.credits")}
                     </h3>
                     <div className="text-2xl sm:text-3xl font-bold text-green-700">
-                      {Math.ceil(animatedEmissions)} créditos de carbono
+                      {t("results.creditsValue", { value: Math.ceil(animatedEmissions) })}
                     </div>
                   </div>
                   
                   {/* Sección de compartir */}
                   <div className="mb-4">
                     <div className="text-teal-dark font-semibold mb-2 text-base sm:text-lg">
-                      ¡Sacale captura y compartí en las redes!<br/>
-                      <span className="text-teal-medium font-bold text-base">Recordá seguirnos</span>
+                      {t("results.shareInstruction")}<br/>
+                      <span className="text-teal-medium font-bold text-base">{t("results.followReminder")}</span>
                     </div>
                     
                     {/* Íconos de redes sociales */}
@@ -957,7 +957,7 @@ export default function CalculadoraPage() {
                   
                   {/* Botón para ver proyectos */}
                   <button className="w-full border-2 border-teal-medium text-teal-medium hover:bg-teal-medium hover:text-white py-2 px-6 rounded-xl font-semibold transition-colors mb-4">
-                    Ver proyectos de compensación
+                    {t("results.seeProjects")}
                     </button>
                   
                   {/* Footer con fecha y web */}
@@ -1393,23 +1393,17 @@ export default function CalculadoraPage() {
                 <div className="flex justify-between text-xs text-teal-medium px-2">
                   <div className="text-center leading-tight">
                     <div className={currentQuestion <= 3 ? 'font-bold text-teal-dark' : ''}>
-                      Transporte
+                      {t("sections.transport")}
                     </div>
                   </div>
                   <div className="text-center leading-tight">
                     <div className={currentQuestion >= 4 && currentQuestion <= 6 ? 'font-bold text-teal-dark' : ''}>
-                      Vuelos y
-                    </div>
-                    <div className={currentQuestion >= 4 && currentQuestion <= 6 ? 'font-bold text-teal-dark' : ''}>
-                      Alimentación
+                      {t("sections.flights")}
                     </div>
                   </div>
                   <div className="text-center leading-tight">
                     <div className={currentQuestion >= 7 ? 'font-bold text-teal-dark' : ''}>
-                      Energía y
-                    </div>
-                    <div className={currentQuestion >= 7 ? 'font-bold text-teal-dark' : ''}>
-                      Estilo de Vida
+                      {t("sections.energy")}
                     </div>
                   </div>
                 </div>
@@ -1450,7 +1444,7 @@ export default function CalculadoraPage() {
                     }`} />
                     <div className="text-center leading-tight">
                       <div className={currentQuestion <= 3 ? 'text-teal-dark font-bold' : ''}>
-                        Transporte
+                        {t("sections.transport")}
                       </div>
                     </div>
                   </div>
@@ -1462,10 +1456,7 @@ export default function CalculadoraPage() {
                     }`} />
                     <div className="text-center leading-tight">
                       <div className={currentQuestion >= 4 && currentQuestion <= 6 ? 'text-teal-dark font-bold' : ''}>
-                        Vuelos y
-                      </div>
-                      <div className={currentQuestion >= 4 && currentQuestion <= 6 ? 'text-teal-dark font-bold' : ''}>
-                        Alimentación
+                        {t("sections.flights")}
                       </div>
                     </div>
                   </div>
@@ -1477,10 +1468,7 @@ export default function CalculadoraPage() {
                     }`} />
                     <div className="text-center leading-tight">
                       <div className={currentQuestion >= 7 ? 'text-teal-dark font-bold' : ''}>
-                        Energía y
-                      </div>
-                      <div className={currentQuestion >= 7 ? 'text-teal-dark font-bold' : ''}>
-                        Estilo de Vida
+                        {t("sections.energy")}
                       </div>
                     </div>
                   </div>
@@ -1849,7 +1837,7 @@ export default function CalculadoraPage() {
                     {t("transport.title")}
                   </h3>
                   <p className="text-white/70 text-sm">
-                    4 preguntas sobre tu movilidad
+                    {t("preview.transportQuestions")}
                   </p>
                 </div>
                 
@@ -1858,7 +1846,7 @@ export default function CalculadoraPage() {
                     {t("flights.title")}
                   </h3>
                   <p className="text-white/70 text-sm">
-                    3 preguntas sobre vuelos y dieta
+                    {t("preview.flightsQuestions")}
                   </p>
                 </div>
                 
@@ -1867,14 +1855,14 @@ export default function CalculadoraPage() {
                     {t("energy.title")}
                   </h3>
                   <p className="text-white/70 text-sm">
-                    8 preguntas sobre energía y hábitos
+                    {t("preview.energyQuestions")}
                   </p>
                 </div>
               </div>
               
               <div className="mt-8 text-center">
                 <p className="text-white/80 text-sm">
-                  ⏱️ Tiempo estimado: 3-5 minutos
+                  {t("preview.estimatedTime")}
                 </p>
               </div>
             </div>

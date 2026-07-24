@@ -482,7 +482,14 @@
       "skipButton": "Saltar",
       "emailBenefit": "Te enviaremos el cálculo y cualquier actualización a este correo.",
       "thanksTitle": "¡Gracias por completar tus datos!",
-      "thanksDescription": "Tu progreso ha sido guardado. Continúa con la calculadora."
+      "thanksDescription": "Tu progreso ha sido guardado. Continúa con la calculadora.",
+      "closeAria": "Cerrar"
+    },
+    "preview": {
+      "transportQuestions": "4 preguntas sobre tu movilidad",
+      "flightsQuestions": "3 preguntas sobre vuelos y dieta",
+      "energyQuestions": "8 preguntas sobre energía y hábitos",
+      "estimatedTime": "⏱️ Tiempo estimado: 3-5 minutos"
     },
     "results": {
       "title": "Tu Huella de Carbono",

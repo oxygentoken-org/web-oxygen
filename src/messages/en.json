@@ -482,7 +482,14 @@
       "skipButton": "Skip",
       "emailBenefit": "We will send your calculation and any updates to this email.",
       "thanksTitle": "Thanks for sharing your details!",
-      "thanksDescription": "Your progress has been saved. Continue with the calculator."
+      "thanksDescription": "Your progress has been saved. Continue with the calculator.",
+      "closeAria": "Close"
+    },
+    "preview": {
+      "transportQuestions": "4 questions about your mobility",
+      "flightsQuestions": "3 questions about flights and diet",
+      "energyQuestions": "8 questions about energy and habits",
+      "estimatedTime": "⏱️ Estimated time: 3-5 minutes"
     },
     "results": {
       "title": "Your Carbon Footprint",
