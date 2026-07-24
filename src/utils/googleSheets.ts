@@ -2,6 +2,17 @@ import { google } from 'googleapis';
 
 const SHEETS_SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 
+// Service-account private keys stored in env vars often arrive wrapped in
+// double quotes and/or with escaped "\n" instead of real newlines. Either one
+// makes OpenSSL reject the PEM (ERR_OSSL_UNSUPPORTED). Normalize before use.
+function normalizePrivateKey(raw: string | undefined): string {
+  if (!raw) return '';
+  return raw
+    .trim()
+    .replace(/^"|"$/g, '')
+    .replace(/\\n/g, '\n');
+}
+
 interface AffiliateCodeData {
   code: string;
   isActive: boolean;
@@ -19,11 +30,11 @@ export class GoogleSheetsService {
 
   constructor() {
     this.spreadsheetId = process.env.GOOGLE_SHEETS_ID || '';
-    
+
     const auth = new google.auth.GoogleAuth({
       credentials: {
         client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-        private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+        private_key: normalizePrivateKey(process.env.GOOGLE_PRIVATE_KEY),
       },
       scopes: SHEETS_SCOPES,
     });
