@@ -78,7 +78,8 @@ export function BackgroundVideo() {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
+            poster="/assets/images/forestHD.jpg"
             onLoadedData={showVideo}
             onCanPlayThrough={() => setIsLoaded(true)}
           >
