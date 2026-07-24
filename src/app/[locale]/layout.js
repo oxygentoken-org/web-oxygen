@@ -46,6 +46,24 @@ async function LocaleLayout({ children, params: { locale } }) {
   return (
     <html lang={locale}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Oxygen Token",
+              url: "https://oxygentoken.org",
+              logo: "https://oxygentoken.org/assets/images/logo.png",
+              sameAs: [
+                "https://x.com/Oxygen_Token",
+                "https://www.instagram.com/oxygen.token/",
+                "https://www.linkedin.com/company/oxygentoken",
+                "https://www.youtube.com/channel/UCKO07x_sPDCw8eXy34uwcgA",
+              ],
+            }),
+          }}
+        />
         <RootLayout />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <DevProvider>
