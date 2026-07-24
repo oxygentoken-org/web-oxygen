@@ -91,8 +91,6 @@ export async function POST(req: NextRequest) {
       });
     });
 
-    console.log(`✅ Logout exitoso - Cookies limpiadas para dominio: ${domain} (${isProduction ? 'PRODUCCIÓN' : 'DESARROLLO'})`);
-
     return response;
   } catch (error) {
     console.error("Error in logout route:", error);

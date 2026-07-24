@@ -122,7 +122,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       });
 
       const responseData = await response.json();
-      console.log("📥 Login response:", responseData);
 
       if (!response.ok) {
         throw response;
@@ -131,7 +130,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       // El backend devuelve success:true o un objeto user cuando el login es exitoso
       if (responseData.success || responseData.user) {
         const userData = responseData.user;
-        console.log("✅ Login condition met, setting user:", userData);
 
         const userObj = {
           username: userData?.fullName || userData?.name || email.split('@')[0],
@@ -161,7 +159,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const logout = async () => {
-    console.log("🚪 Iniciando LOGOUT NUCLEAR...");
     setIsLoggingOut(true);
     setLoading(true);
 
@@ -172,9 +169,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         credentials: "include",
       });
 
-      if (response.ok) {
-        console.log("✅ Logout exitoso - Cookies HttpOnly limpiadas");
-      } else {
+      if (!response.ok) {
         console.warn("⚠️ Logout del servidor falló, continuando con limpieza local");
       }
     } catch (error) {
@@ -208,8 +203,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         '.localhost',
         '127.0.0.1',
       ];
-
-      console.log(`🍪 Limpiando cookies para dominio: ${currentDomain} (${isProduction ? 'PRODUCCIÓN' : 'DESARROLLO'})`);
 
       // Limpiar cookies conocidas con todas las variaciones
       cookieNames.forEach(name => {
@@ -251,8 +244,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           });
         }
       });
-
-      console.log("✅ Cookies limpiadas");
     } catch (cookieError) {
       console.error("❌ Error limpiando cookies:", cookieError);
     }
@@ -261,7 +252,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     try {
       // LocalStorage
       const localStorageKeys = Object.keys(localStorage);
-      console.log(`🗄️ Limpiando ${localStorageKeys.length} items de localStorage`);
       localStorageKeys.forEach(key => {
         localStorage.removeItem(key);
       });
@@ -269,13 +259,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
       // SessionStorage
       const sessionStorageKeys = Object.keys(sessionStorage);
-      console.log(`🗄️ Limpiando ${sessionStorageKeys.length} items de sessionStorage`);
       sessionStorageKeys.forEach(key => {
         sessionStorage.removeItem(key);
       });
       sessionStorage.clear();
-
-      console.log("✅ Storage limpiado completamente");
     } catch (storageError) {
       console.error("❌ Error limpiando storage:", storageError);
     }
@@ -285,11 +272,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       // Limpiar Cache API si está disponible
       if ('caches' in window) {
         const cacheNames = await caches.keys();
-        console.log(`🗑️ Limpiando ${cacheNames.length} cachés`);
         await Promise.all(
           cacheNames.map(cacheName => caches.delete(cacheName))
         );
-        console.log("✅ Caché limpiado");
       }
     } catch (cacheError) {
       console.error("❌ Error limpiando caché:", cacheError);
@@ -300,8 +285,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     setHasLoggedOut(true);
     setLoading(false);
     setIsLoggingOut(false);
-
-    console.log("✅ LOGOUT NUCLEAR COMPLETADO");
 
     // 6. FORZAR REDIRECCIÓN Y RECARGA
     // Esperar un momento para que todas las operaciones async terminen
@@ -335,8 +318,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   // Función de logout forzado que no depende del backend
   const forceLogout = () => {
-    console.log("🔄 Force logout iniciado...");
-
     // NUCLEAR APPROACH - Limpiar TODO inmediatamente
     setUser(null);
     setLoading(false);
@@ -358,9 +339,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       
       // Dominios específicos para desarrollo local
       const domains = ['', 'localhost', '.localhost', '127.0.0.1', 'localhost:3000', window.location.hostname, window.location.host]
-      
-      console.log("🍪 Limpiando cookies específicas:", cookieNames);
-      
+
       // Limpiar cada cookie con todas las variaciones posibles
       cookieNames.forEach(name => {
         paths.forEach(path => {
@@ -487,7 +466,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     // Si el usuario ya está seteado, no hacer checkAuth
     if (user) {
-      console.log("✅ Usuario ya existe en contexto, saltando checkAuth");
       setLoading(false);
       return;
     }
@@ -507,8 +485,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       return () => {
         clearTimeout(fallbackTimeout);
       };
-    } else {
-      console.log("⏸️ Saltando checkAuth:", { isLoggingOut, hasLoggedOut });
     }
   }, [isLoggingOut, hasLoggedOut, isDevMode, mockUser, user]);
 

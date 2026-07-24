@@ -14,8 +14,6 @@ export async function POST(req: NextRequest) {
 
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "https://backend-render-7vh2.onrender.com";
 
-    console.log("📧 Proxying forgot-password request to backend:", backendUrl);
-
     const backendResponse = await fetch(`${backendUrl}/forgot-password`, {
       method: "POST",
       headers: {
@@ -28,14 +26,12 @@ export async function POST(req: NextRequest) {
     const responseData = await backendResponse.json();
 
     if (!backendResponse.ok) {
-      console.error("❌ Backend forgot-password failed:", backendResponse.status, responseData);
+      console.error("❌ Backend forgot-password failed:", backendResponse.status);
       return NextResponse.json(
         { success: false, error: responseData.error || "Request failed" },
         { status: backendResponse.status }
       );
     }
-
-    console.log("✅ Forgot password email sent successfully");
 
     return NextResponse.json(
       {
