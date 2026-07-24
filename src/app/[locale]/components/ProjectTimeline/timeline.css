@@ -115,6 +115,19 @@
   aspect-ratio: 16 / 10;
 }
 
+.timelineDetailImage.contain {
+  background-color: #eef2f2;
+  aspect-ratio: 3 / 4;
+  flex: 0 1 300px;
+  max-width: 340px;
+}
+
+@media screen and (max-width: 768px) {
+  .timelineDetailImage.contain {
+    max-width: 100%;
+  }
+}
+
 .timelineDetailText {
   flex: 1 1 320px;
   padding: 1.5em;
@@ -141,6 +154,7 @@
   font-size: clamp(13px, 1.1vw, 16px);
   line-height: 1.4em;
   margin: 0;
+  white-space: pre-line;
 }
 
 @media screen and (max-width: 768px) {

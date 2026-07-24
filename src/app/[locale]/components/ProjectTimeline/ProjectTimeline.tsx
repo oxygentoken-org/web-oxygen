@@ -6,10 +6,10 @@ import { useTranslations } from "next-intl";
 import "./timeline.css";
 
 import imgMensura from "../../../../../public/assets/images/DronLaFlorencia.webp";
-import imgComunidad from "../../../../../public/assets/images/hector.png";
+import imgComunidad from "../../../../../public/assets/images/comunidad-mistolar-ago2024.jpg";
 import imgAgua from "../../../../../public/assets/images/cisterna-mistolar-terminada-oct2025.jpg";
 import imgVivienda from "../../../../../public/assets/images/forest-vertical.jpg";
-import imgAsamblea from "../../../../../public/assets/images/hector.png";
+import imgAsamblea from "../../../../../public/assets/images/asamblea-mistolar-jul2025.jpg";
 import imgOfpPiloto from "../../../../../public/assets/images/forest-hd-bg.jpg";
 import imgOfpFull from "../../../../../public/assets/images/forestHD.jpg";
 import imgVerra from "../../../../../public/assets/images/DronLaFlorencia.webp";
@@ -17,6 +17,8 @@ import imgVerra from "../../../../../public/assets/images/DronLaFlorencia.webp";
 interface Milestone {
   key: string;
   image: StaticImageData;
+  // "contain" evita recortar fotos verticales (celular) que no calzan en el marco horizontal
+  fit?: "cover" | "contain";
 }
 
 // Orden cronológico por fecha real del hito (no por número de key)
@@ -24,8 +26,8 @@ const MILESTONES: Milestone[] = [
   { key: "m1", image: imgMensura },
   { key: "m2", image: imgComunidad },
   { key: "m4", image: imgVivienda },
-  { key: "m5", image: imgAsamblea },
-  { key: "m3", image: imgAgua },
+  { key: "m5", image: imgAsamblea, fit: "contain" },
+  { key: "m3", image: imgAgua, fit: "contain" },
   { key: "m6", image: imgOfpPiloto },
   { key: "m7", image: imgOfpFull },
   { key: "m8", image: imgVerra },
@@ -69,13 +71,16 @@ const ProjectTimeline = () => {
       </div>
 
       <div className="timelineDetail">
-        <div className="timelineDetailImage">
+        <div className={`timelineDetailImage${active.fit === "contain" ? " contain" : ""}`}>
           <Image
             src={active.image}
             alt={t(`${active.key}-title`)}
             fill
             sizes="(max-width: 768px) 100vw, 480px"
-            style={{ objectFit: "cover" }}
+            style={{
+              objectFit: active.fit === "contain" ? "contain" : "cover",
+              objectPosition: "center",
+            }}
           />
         </div>
         <div className="timelineDetailText">
