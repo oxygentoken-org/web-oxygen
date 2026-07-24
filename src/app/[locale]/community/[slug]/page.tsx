@@ -46,6 +46,7 @@ function sanitizeArticleHtml(html: string, headline: string): string {
 
 interface SEObotBlogPostPageProps {
   params: {
+    locale: string;
     slug: string;
   };
 }
