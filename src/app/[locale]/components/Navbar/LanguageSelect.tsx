@@ -12,19 +12,19 @@ const LanguageSelect = ({ className }: LanguageSelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const pathWithoutLocale = pathname.replace(/^\/(es|en)/, "");
-  const currentLocale = pathname.split("/")[1] || "en";
+  const pathWithoutLocale = pathname.replace(/^\/(es|en)(?=\/|$)/, "");
+  const currentLocale = pathname.split("/")[1] || "es";
 
   const handleChangeLang = (lang: string) => {
-    console.log('🔄 Changing language to:', lang);
-    console.log('📍 Current pathname:', pathname);
-    console.log('📍 Path without locale:', pathWithoutLocale);
-    
-    const newUrl = `/${lang}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
-    console.log('📍 New URL:', newUrl);
-    
+    // Preserve the current query string and hash so switching language on
+    // e.g. /login?panel=register or a page anchored with #section keeps them.
+    const search = typeof window !== "undefined" ? window.location.search : "";
+    const hash = typeof window !== "undefined" ? window.location.hash : "";
+    const basePath = pathWithoutLocale === "/" ? "" : pathWithoutLocale;
+    const newUrl = `/${lang}${basePath}${search}${hash}`;
+
     setIsOpen(false);
-    window.location.href = `${newUrl}?t=${Date.now()}`;
+    window.location.href = newUrl;
   };
 
   const toggleDropdown = () => {
