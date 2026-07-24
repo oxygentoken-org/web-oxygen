@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import DashboardLayout from "../../components/DashboardLayout/DashboardLayout";
 import Animated_Page from "../../components/ui/Animated_Page";
 import Image from "next/image";
@@ -6,12 +7,13 @@ import { PiChatCircle } from "react-icons/pi";
 import FAQ_Accordion from "../../components/Help/FAQ_Accordion";
 
 export default function AyudaPage() {
+  const t = useTranslations("Dashboard.help");
   return (
     <DashboardLayout>
       <Animated_Page>
         <div className="flex flex-col gap-6 h-full min-h-0">
           <h1 className="text-white font-bold text-lg sm:text-xl flex-shrink-0">
-            ¿Cómo te podemos ayudar?
+            {t("title")}
           </h1>
           
           <div className="flex flex-col gap-6 flex-1 min-h-0">
@@ -70,16 +72,16 @@ export default function AyudaPage() {
                   </div>
                 </div>
                 <div className="text-center space-y-1">
-                  <p className="text-gray-600 text-sm sm:text-base">¿Necesitas ayuda?</p>
-                  <p className="text-gray-600 text-sm sm:text-base">¡Hablanos!</p>
+                  <p className="text-gray-600 text-sm sm:text-base">{t("needHelp")}</p>
+                  <p className="text-gray-600 text-sm sm:text-base">{t("contactUs")}</p>
                 </div>
                 <button className="px-4 sm:px-6 py-1.5 sm:py-2 border-2 border-[#539390] rounded-lg text-[#539390] font-semibold text-xs sm:text-sm hover:bg-[#539390] hover:text-white transition-colors whitespace-nowrap">
-                  Preguntanos
+                  {t("askUs")}
                 </button>
               </div>
               
               <div id="help-faq" className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20 md:col-span-4 flex flex-col min-h-0 h-full overflow-hidden">
-                <h2 className="text-white font-bold text-base sm:text-lg mb-4 sm:mb-6 flex-shrink-0">Preguntas frecuentes</h2>
+                <h2 className="text-white font-bold text-base sm:text-lg mb-4 sm:mb-6 flex-shrink-0">{t("faq")}</h2>
                 <div className="flex-1 min-h-0 overflow-y-auto">
                   <FAQ_Accordion />
                 </div>

@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { PiFlag } from "react-icons/pi";
 
 interface Project_CardProps {
@@ -14,6 +15,7 @@ interface Project_CardProps {
 export default function Project_Card({ image, name, location, price, onClick }: Project_CardProps) {
   const router = useRouter();
   const pathname = usePathname();
+  const t = useTranslations("Dashboard.compensate");
   const locale = pathname.split("/")[1] || "en";
 
   const handleComprarClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -61,7 +63,7 @@ export default function Project_Card({ image, name, location, price, onClick }: 
               onClick={handleComprarClick}
               className="px-4 sm:px-6 py-2 sm:py-2.5 border border-white rounded-lg text-white text-xs sm:text-sm font-semibold hover:bg-white/10 transition-colors whitespace-nowrap"
             >
-              Comprar
+              {t("buy")}
             </button>
           </div>
         </div>
