@@ -97,17 +97,22 @@
     "news-button": "Send"
   },
   "Blog": {
-    "title": "Community",
-    "subtitle": "Discover the latest news, insights, and stories about environmental conservation and our mission to protect native forests.",
     "allPosts": "All Posts",
-    "searchPlaceholder": "Search posts...",
+    "searchResults": "Search Results",
+    "loading": "Loading posts...",
+    "errorLoading": "Error loading posts. Please try again later.",
+    "noResults": "No posts found for your search.",
+    "noPosts": "No posts available.",
+    "searchComplete": "Search complete",
+    "postNotFound": "Post not found",
+    "postNotFoundMessage": "The post you're looking for doesn't exist or has been removed.",
+    "backToBlog": "Back to Blog",
+    "publishedOn": "Published on",
     "views": "views",
     "comments": "comments",
-    "aboutSection": "About Our Community",
-    "aboutText": "We share insights about forest conservation, carbon credits, and environmental initiatives. Stay updated with our latest projects and achievements.",
-    "articles": "articles",
-    "updated": "Regularly updated",
-    "moreComing": "More articles coming soon..."
+    "likes": "likes",
+    "seobotBlogTitle": "SEObot Blog",
+    "seobotBlogSubtitle": "Discover the latest AI-generated content about environmental conservation, sustainability, and our mission to protect native forests."
   },
   "AboutUs": {
     "title": "This is Oxygen.",
@@ -130,6 +135,34 @@
     "laFlorencia-text": "La Florencia is divided into two estancias, the eastern and western parts. Together they cover an area of about 90,000 hectares in which we find forest environments, wetlands, sandy areas, among others. It is worth mentioning the confirmed presence of the yaguarete, the yurumi or anteater, the collared peccary and many other species of animals and plants. It is a key territory for the survival of the yaguarete (there are between 200 and 250 left in the wild and only 20 in the Gran Chaco of Argentina). It stands out for its proximity to the Impenetrable National Park, acting as a biological corridor between it and the province of Salta.",
     "map-with-markers-title": "360° VIDEOS OF LA FLORENCIA",
     "map-with-markers-description": "Click on the points of interest to view the videos"
+  },
+  "ProjectTimeline": {
+    "eyebrow": "TIMELINE",
+    "title": "CONCRETE PROJECT PROGRESS",
+    "m1-date": "2019",
+    "m1-title": "Alliance with Estancias La Florencia SA",
+    "m1-desc": "Oxygen partners with Estancias La Florencia SA, the legal owners of the land. This alliance lays the groundwork for a paradigm shift: trees are worth more standing than as timber.",
+    "m2-date": "August 2024",
+    "m2-title": "Formal engagement with the Wichí community",
+    "m2-desc": "A formal relationship with the Wichí Cruce El Mistolar community begins through a multi-institutional meeting with local, provincial and indigenous authorities.",
+    "m3-date": "October 2025",
+    "m3-title": "Community alliance for water cisterns",
+    "m3-desc": "A field trip with several activities included a consultation with the Wichí community that led to an alliance enabling the construction of 2 water storage cisterns.\n\nLack of water access during droughts meant long trips carrying water containers from the river to the community. With the cisterns we make water management easier and support productive activities such as raising livestock and growing pumpkins and watermelons.\n\nWe're still working on a way to cover them and prevent water contamination. If you have any suggestions on how to do it, write to us at forests@oxygentoken.org.",
+    "m4-date": "2024–2025",
+    "m4-title": "Community housing construction",
+    "m4-desc": "Construction of a community house moves forward, part of Oxygen's commitment to local development beyond conservation.",
+    "m5-date": "July 2025",
+    "m5-title": "Community assembly on the land transfer",
+    "m5-desc": "Our project includes transferring a parcel of land to the Wichí Mistolar community under communal title, to secure cultural continuity, territorial belonging and community development. To move this forward we held an assembly and recorded this commitment in the community's minutes book, together with a call to the government of Formosa Province to work together toward this goal.",
+    "m6-date": "Early 2026",
+    "m6-title": "First polygons submitted to Open Forest Protocol",
+    "m6-desc": "The first pilot reforestation polygons are submitted to Open Forest Protocol (OFP), formally kicking off the project's reforestation track.",
+    "m7-date": "June 2026",
+    "m7-title": "92 reforestation polygons submitted to OFP",
+    "m7-desc": "The final package of 92 reforestation polygons is completed and submitted to OFP, covering close to 713 hectares of native Chaco species.",
+    "m8-date": "July 2026",
+    "m8-title": "Verra conservation polygon finalized",
+    "m8-desc": "The final conservation polygon for the Verra REDD+ standard is delimited, covering approximately 33,000 hectares with zero overlap with the reforestation areas."
   },
   "Buy": {
     "title": "Start to make the change",
@@ -526,7 +559,7 @@
     },
     "sections": {
       "transport": "Transport",
-      "flights": "Flights & Diet", 
+      "flights": "Flights & Diet",
       "energy": "Energy & Lifestyle"
     },
     "transport": {
@@ -745,24 +778,6 @@
         "frequent": "Frequent or extensive"
       }
     }
-  },
-  "Blog": {
-    "allPosts": "All Posts",
-    "searchResults": "Search Results",
-    "loading": "Loading posts...",
-    "errorLoading": "Error loading posts. Please try again later.",
-    "noResults": "No posts found for your search.",
-    "noPosts": "No posts available.",
-    "searchComplete": "Search complete",
-    "postNotFound": "Post not found",
-    "postNotFoundMessage": "The post you're looking for doesn't exist or has been removed.",
-    "backToBlog": "Back to Blog",
-    "publishedOn": "Published on",
-    "views": "views",
-    "comments": "comments",
-    "likes": "likes",
-    "seobotBlogTitle": "SEObot Blog",
-    "seobotBlogSubtitle": "Discover the latest AI-generated content about environmental conservation, sustainability, and our mission to protect native forests."
   },
   "WhatsApp": {
     "buttonText": "Contact us",

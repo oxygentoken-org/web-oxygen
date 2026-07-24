@@ -97,17 +97,21 @@
     "news-button": "Enviar"
   },
   "Blog": {
-    "title": "Comunidad",
-    "subtitle": "Descubrí las últimas noticias, insights e historias sobre conservación ambiental y nuestra misión de proteger los bosques nativos.",
-    "allPosts": "Todos los Posts",
-    "searchPlaceholder": "Buscar posts...",
+    "searchResults": "Resultados de búsqueda",
+    "loading": "Cargando posts...",
+    "errorLoading": "Error al cargar los posts. Inténtalo de nuevo más tarde.",
+    "noResults": "No se encontraron posts para tu búsqueda.",
+    "noPosts": "No hay posts disponibles.",
+    "searchComplete": "Búsqueda completada",
+    "postNotFound": "Post no encontrado",
+    "postNotFoundMessage": "El post que buscas no existe o ha sido eliminado.",
+    "backToBlog": "Volver al Blog",
+    "publishedOn": "Publicado el",
     "views": "vistas",
     "comments": "comentarios",
-    "aboutSection": "Sobre Nuestra Comunidad",
-    "aboutText": "Compartimos insights sobre conservación forestal, bonos de carbono e iniciativas ambientales. Mantenete actualizado con nuestros últimos proyectos y logros.",
-    "articles": "artículos",
-    "updated": "Actualizado regularmente",
-    "moreComing": "Más artículos próximamente..."
+    "likes": "me gusta",
+    "seobotBlogTitle": "SEObot Blog",
+    "seobotBlogSubtitle": "Descubre el último contenido generado por IA sobre conservación ambiental, sostenibilidad y nuestra misión de proteger los bosques nativos."
   },
   "AboutUs": {
     "title": "Ésto es Oxygen.",
@@ -130,6 +134,34 @@
     "laFlorencia-text": "La Florencia está dividida en dos estancias la parte este y la parte oeste Juntas suman una superficie de cerca de 90.000 hectáreas en las que encontramos ambientes de bosque, humedades, zonas de arenal entre otros. Cabe destacar la presencia confirmada del yaguarete, el yurumi u oso hormiguero, el pecari de collar y muchas otras especies de animales y plantas. Es un territorio clave para la supervivencia del yaguarete ( quedan entre 200 y 250 en estado silvestre y solo 20 en el gran chaco argentino. Se destaca por su cercanía con el parque nacional Impenetrable, actuando como corredor biológico entre el mismo y la provincia de Salta.",
     "map-with-markers-title": "VIDEOS 360° DE LA FLORENCIA",
     "map-with-markers-description": "Haga click en los puntos de interes para vizualizar los videos"
+  },
+  "ProjectTimeline": {
+    "eyebrow": "LÍNEA DE TIEMPO",
+    "title": "AVANCES CONCRETOS DEL PROYECTO",
+    "m1-date": "2019",
+    "m1-title": "Alianza con Estancias La Florencia SA",
+    "m1-desc": "Oxygen se asocia con Estancias La Florencia SA, propietarios legales del campo. Esta unión sienta las bases para cambiar el paradigma: los árboles valen más en pie que como madera.",
+    "m2-date": "Agosto 2024",
+    "m2-title": "Vínculo formal con la comunidad Wichí",
+    "m2-desc": "Se formaliza el vínculo con la comunidad Wichí Cruce El Mistolar a través de una reunión multi-institucional con autoridades locales, provinciales e indígenas.",
+    "m3-date": "Octubre 2025",
+    "m3-title": "Alianza con la comunidad para cisternas de agua",
+    "m3-desc": "Un viaje a campo con distintas actividades incluyó una consulta con la comunidad Wichí que dio lugar a una alianza que permitió construir 2 cisternas de almacenamiento de agua.\n\nLa falta de acceso al agua en épocas de sequía obligaba a largos desplazamientos, cargando bidones desde el río hasta la comunidad. Con las cisternas facilitamos el manejo de este recurso y apoyamos actividades productivas como la cría de ganado y la siembra de zapallos y sandías.\n\nSeguimos trabajando en una solución para taparlas y evitar la contaminación del agua. Si tenés alguna sugerencia para lograrlo, escribinos a forests@oxygentoken.org.",
+    "m4-date": "2024–2025",
+    "m4-title": "Construcción de vivienda comunitaria",
+    "m4-desc": "Avanza la construcción de una vivienda para la comunidad, parte del compromiso de Oxygen con el desarrollo local más allá de la conservación.",
+    "m5-date": "Julio 2025",
+    "m5-title": "Asamblea comunitaria por la entrega de tierras",
+    "m5-desc": "Nuestro proyecto incluye entregar a la comunidad Wichí del Mistolar una parcela de tierra a título comunitario, para asegurar la continuidad cultural, el arraigo territorial y el desarrollo comunitario. Para avanzar en esto realizamos una asamblea y dejamos asentada esta voluntad en el libro de actas de la comunidad, junto con un llamado al gobierno de la provincia de Formosa a trabajar en conjunto por este objetivo.",
+    "m6-date": "Principios de 2026",
+    "m6-title": "Primeros polígonos en Open Forest Protocol",
+    "m6-desc": "Se presentan los primeros polígonos piloto de reforestación ante Open Forest Protocol (OFP), dando inicio formal a la pista de reforestación del proyecto.",
+    "m7-date": "Junio 2026",
+    "m7-title": "92 polígonos de reforestación enviados a OFP",
+    "m7-desc": "Se completa y envía el paquete final de 92 polígonos de reforestación a OFP, cubriendo cerca de 713 hectáreas con especies nativas del Chaco.",
+    "m8-date": "Julio 2026",
+    "m8-title": "Polígono de conservación Verra delimitado",
+    "m8-desc": "Se delimita el polígono final de conservación para el estándar Verra REDD+, de aproximadamente 33.000 hectáreas, sin superposición con las zonas de reforestación."
   },
   "Buy": {
     "title": "Comenzá a hacer el cambio",
@@ -526,7 +558,7 @@
     },
     "sections": {
       "transport": "Transporte",
-      "flights": "Vuelos y Alimentación", 
+      "flights": "Vuelos y Alimentación",
       "energy": "Energía y Estilo de Vida"
     },
     "transport": {
@@ -745,23 +777,6 @@
         "frequent": "Frecuente o extensos"
       }
     }
-  },
-  "Blog": {
-    "searchResults": "Resultados de búsqueda",
-    "loading": "Cargando posts...",
-    "errorLoading": "Error al cargar los posts. Inténtalo de nuevo más tarde.",
-    "noResults": "No se encontraron posts para tu búsqueda.",
-    "noPosts": "No hay posts disponibles.",
-    "searchComplete": "Búsqueda completada",
-    "postNotFound": "Post no encontrado",
-    "postNotFoundMessage": "El post que buscas no existe o ha sido eliminado.",
-    "backToBlog": "Volver al Blog",
-    "publishedOn": "Publicado el",
-    "views": "vistas",
-    "comments": "comentarios",
-    "likes": "me gusta",
-    "seobotBlogTitle": "SEObot Blog",
-    "seobotBlogSubtitle": "Descubre el último contenido generado por IA sobre conservación ambiental, sostenibilidad y nuestra misión de proteger los bosques nativos."
   },
   "WhatsApp": {
     "buttonText": "Contáctanos",
