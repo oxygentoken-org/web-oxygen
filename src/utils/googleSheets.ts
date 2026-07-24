@@ -60,6 +60,46 @@ export class GoogleSheetsService {
     }
   }
 
+  // Creates the given tab (with a header row) if it does not exist yet, so the
+  // first newsletter signup does not fail on a missing sheet.
+  private async ensureSheetExists(title: string, headers: string[]): Promise<void> {
+    const meta = await this.sheets.spreadsheets.get({ spreadsheetId: this.spreadsheetId });
+    const exists = (meta.data.sheets || []).some(
+      (s: any) => s.properties?.title === title
+    );
+    if (exists) return;
+
+    await this.sheets.spreadsheets.batchUpdate({
+      spreadsheetId: this.spreadsheetId,
+      resource: { requests: [{ addSheet: { properties: { title } } }] },
+    });
+    await this.sheets.spreadsheets.values.update({
+      spreadsheetId: this.spreadsheetId,
+      range: `${title}!A1`,
+      valueInputOption: 'RAW',
+      resource: { values: [headers] },
+    });
+  }
+
+  // Appends a newsletter signup to the "Newsletter" tab. Returns false on error
+  // so the caller can respond without throwing.
+  async addNewsletterSubscriber(email: string, source: string = 'footer'): Promise<boolean> {
+    try {
+      await this.ensureSheetExists('Newsletter', ['Email', 'Date', 'Source']);
+      await this.sheets.spreadsheets.values.append({
+        spreadsheetId: this.spreadsheetId,
+        range: 'Newsletter!A:C',
+        valueInputOption: 'RAW',
+        insertDataOption: 'INSERT_ROWS',
+        resource: { values: [[email, new Date().toISOString(), source]] },
+      });
+      return true;
+    } catch (error) {
+      console.error('Error adding newsletter subscriber to Google Sheets:', error);
+      return false;
+    }
+  }
+
   async updateAffiliateCodeUsage(code: string, email: string, sheetName: string = 'Hoja 1', fullName?: string): Promise<boolean> {
     try {
       const response = await this.sheets.spreadsheets.values.get({
