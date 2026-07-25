@@ -34,10 +34,16 @@ const WhatsApp_Button = dynamic(
   () => import("../WhatsApp/WhatsApp_Button"),
   { ssr: true }
 );
+const NewsletterPopup = dynamic(
+  () => import("../NewsletterPopup/NewsletterPopup"),
+  { ssr: false }
+);
 
 const MainPage = () => {
   return (
     <>
+      <NewsletterPopup />
+
       <PreLanding />
 
       <BackgroundVideo />

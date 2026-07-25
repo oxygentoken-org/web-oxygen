@@ -97,17 +97,22 @@
     "news-button": "Send"
   },
   "Blog": {
-    "title": "Community",
-    "subtitle": "Discover the latest news, insights, and stories about environmental conservation and our mission to protect native forests.",
     "allPosts": "All Posts",
-    "searchPlaceholder": "Search posts...",
+    "searchResults": "Search Results",
+    "loading": "Loading posts...",
+    "errorLoading": "Error loading posts. Please try again later.",
+    "noResults": "No posts found for your search.",
+    "noPosts": "No posts available.",
+    "searchComplete": "Search complete",
+    "postNotFound": "Post not found",
+    "postNotFoundMessage": "The post you're looking for doesn't exist or has been removed.",
+    "backToBlog": "Back to Blog",
+    "publishedOn": "Published on",
     "views": "views",
     "comments": "comments",
-    "aboutSection": "About Our Community",
-    "aboutText": "We share insights about forest conservation, carbon credits, and environmental initiatives. Stay updated with our latest projects and achievements.",
-    "articles": "articles",
-    "updated": "Regularly updated",
-    "moreComing": "More articles coming soon..."
+    "likes": "likes",
+    "seobotBlogTitle": "SEObot Blog",
+    "seobotBlogSubtitle": "Discover the latest AI-generated content about environmental conservation, sustainability, and our mission to protect native forests."
   },
   "AboutUs": {
     "title": "This is Oxygen.",
@@ -526,7 +531,7 @@
     },
     "sections": {
       "transport": "Transport",
-      "flights": "Flights & Diet", 
+      "flights": "Flights & Diet",
       "energy": "Energy & Lifestyle"
     },
     "transport": {
@@ -746,24 +751,6 @@
       }
     }
   },
-  "Blog": {
-    "allPosts": "All Posts",
-    "searchResults": "Search Results",
-    "loading": "Loading posts...",
-    "errorLoading": "Error loading posts. Please try again later.",
-    "noResults": "No posts found for your search.",
-    "noPosts": "No posts available.",
-    "searchComplete": "Search complete",
-    "postNotFound": "Post not found",
-    "postNotFoundMessage": "The post you're looking for doesn't exist or has been removed.",
-    "backToBlog": "Back to Blog",
-    "publishedOn": "Published on",
-    "views": "views",
-    "comments": "comments",
-    "likes": "likes",
-    "seobotBlogTitle": "SEObot Blog",
-    "seobotBlogSubtitle": "Discover the latest AI-generated content about environmental conservation, sustainability, and our mission to protect native forests."
-  },
   "WhatsApp": {
     "buttonText": "Contact us",
     "buttonLabel": "Chat with us on WhatsApp"
@@ -790,5 +777,15 @@
     "error-already-used": "This code has already been used",
     "error-expired": "This code has expired",
     "error-generic": "Something went wrong. Please try again."
+  },
+  "NewsletterPopup": {
+    "title": "Join the Oxygen community",
+    "body": "Get updates on our conservation and reforestation projects in the Gran Chaco.",
+    "placeholder": "Your email",
+    "cta": "Subscribe",
+    "sending": "Sending...",
+    "thanks": "Thanks! You're subscribed.",
+    "error": "Enter a valid email.",
+    "close": "Close"
   }
 }
