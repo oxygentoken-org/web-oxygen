@@ -10,7 +10,10 @@ export function generateMetadata({ params: { locale } }) {
   return {
     title,
     description,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      languages: { es: "/es/proyectos", en: "/en/proyectos", "x-default": "/es/proyectos" },
+    },
     openGraph: { title, description, url, type: "website" },
   };
 }
