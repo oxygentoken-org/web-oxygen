@@ -9,6 +9,7 @@ import {
 } from "react-icons/pi";
 import { FaLinkedinIn } from "react-icons/fa6";
 import NewsletterForm from "./NewsletterForm";
+import TurtleMascot from "../TurtleMascot/TurtleMascot";
 
 const socials = [
   {
@@ -112,6 +113,9 @@ function Footer() {
             </div>
           </div>
         </div>
+
+        <TurtleMascot />
+
         <div className="mt-10 pt-6 border-t border-white/10 text-sm text-white/70 flex items-center justify-between">
           <span>© {new Date().getFullYear()} Oxygen. All rights reserved.</span>
           <span>Built for a greener future</span>
