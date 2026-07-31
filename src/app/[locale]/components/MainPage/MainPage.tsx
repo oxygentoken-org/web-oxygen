@@ -20,7 +20,7 @@ const Tokens = dynamic(() => import("./Tokens").then((m) => m.Tokens), {
 const Progress = dynamic(() => import("./Progress").then((m) => m.Progress), {
   ssr: true,
 });
-const Video = dynamic(() => import("./Video").then((m) => m.Video), {
+const Video = dynamic(() => import("./Video"), {
   ssr: true,
 });
 const Partnerships = dynamic(() => import("../Partnerships/Partnerships"), {
