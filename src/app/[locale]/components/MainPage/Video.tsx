@@ -2,7 +2,7 @@
 import { useTranslations } from "next-intl";
 import { ClientOnly } from "../ClientOnly/ClientOnly";
 
-export function Video() {
+function Video() {
   const videointro = useTranslations("videoIntro");
 
   return (
@@ -43,3 +43,5 @@ export function Video() {
     </section>
   );
 }
+
+export default Video;
