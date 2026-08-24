@@ -24,12 +24,6 @@ function TurtleMascot() {
 
     const laneWidth = () => Math.max(0, lane.clientWidth - wrap.offsetWidth);
 
-    const isAtBottom = () => {
-      const doc = document.documentElement;
-      const scrollTop = doc.scrollTop || document.body.scrollTop;
-      const max = doc.scrollHeight - doc.clientHeight;
-      return max > 0 && scrollTop >= max - BOTTOM_THRESHOLD_PX;
-    };
 
     const startLegs = () => {
       if (stepInterval) return;
@@ -83,11 +77,6 @@ function TurtleMascot() {
       wrap.style.transition = "";
     };
 
-    const onScroll = () => {
-      if (isAtBottom()) walk();
-      else if (walking || arrived) reset();
-    };
-
     const onResize = () => {
       if (walking || arrived) wrap.style.left = `${laneWidth()}px`;
     };
@@ -110,14 +99,25 @@ function TurtleMascot() {
     };
 
     wrap.style.left = "0px";
-    window.addEventListener("scroll", onScroll, { passive: true });
+
+    // Trigger the walk when the turtle's lane scrolls into view (reliable and
+    // it never fires during initial layout). Replays each time it re-enters.
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) walk();
+          else reset();
+        }
+      },
+      { threshold: 0.6 },
+    );
+    io.observe(lane);
+
     window.addEventListener("resize", onResize);
     document.addEventListener("click", onDocumentClick);
-    // Intentionally NOT calling onScroll() on mount: that would consume the
-    // walk during initial layout/scroll-restoration, before the user sees it.
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      io.disconnect();
       window.removeEventListener("resize", onResize);
       document.removeEventListener("click", onDocumentClick);
       if (stepInterval) clearInterval(stepInterval);
