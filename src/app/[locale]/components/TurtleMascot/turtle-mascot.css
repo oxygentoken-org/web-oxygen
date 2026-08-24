@@ -1,0 +1,83 @@
+.turtle-mascot {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 16px;
+  margin-top: 8px;
+}
+
+.turtle-mascot-message {
+  margin: 0 0 8px;
+  padding: 0 4px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.55);
+  font-style: italic;
+}
+.turtle-mascot-message strong {
+  color: rgba(255, 255, 255, 0.8);
+  font-style: normal;
+}
+
+.turtle-mascot-lane {
+  position: relative;
+  height: 64px;
+  overflow: visible;
+}
+
+.turtle-mascot-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.12) 0 6px,
+    transparent 6px 14px
+  );
+  transform: translateY(-1px);
+}
+
+.turtle-mascot-wrap {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -78%);
+  width: 96px;
+  height: 62px;
+  will-change: left;
+  image-rendering: pixelated;
+  transition: left 7s ease-in-out;
+}
+.turtle-mascot-wrap svg {
+  display: block;
+  transition: transform 0.46s steps(2);
+}
+.turtle-mascot-wrap #turtle-leg-back,
+.turtle-mascot-wrap #turtle-leg-front {
+  transition: transform 0.46s steps(2);
+}
+/* two-frame pixel walk cycle, toggled by JS while the turtle walks */
+.turtle-mascot-wrap.step-a #turtle-leg-back { transform: translate(3px, 0); }
+.turtle-mascot-wrap.step-a #turtle-leg-front { transform: translate(-3px, 0); }
+.turtle-mascot-wrap.step-a svg { transform: translateY(0); }
+.turtle-mascot-wrap.step-b #turtle-leg-back { transform: translate(-3px, 0); }
+.turtle-mascot-wrap.step-b #turtle-leg-front { transform: translate(3px, 0); }
+.turtle-mascot-wrap.step-b svg { transform: translateY(-2px); }
+
+.turtle-mascot-shadow {
+  position: absolute;
+  bottom: -4px;
+  left: 20px;
+  width: 56px;
+  height: 9px;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .turtle-mascot-wrap,
+  .turtle-mascot-wrap svg,
+  .turtle-mascot-wrap #turtle-leg-back,
+  .turtle-mascot-wrap #turtle-leg-front {
+    transition-duration: 0.01ms !important;
+  }
+}
