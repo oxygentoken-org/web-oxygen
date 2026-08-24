@@ -4,8 +4,9 @@ import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import "./turtle-mascot.css";
 
-const BOTTOM_THRESHOLD_PX = 4;
 const STEP_INTERVAL_MS = 460;
+// Keep in sync with `transition: left` duration in turtle-mascot.css.
+const WALK_MS = 7000;
 
 function TurtleMascot() {
   const t = useTranslations("Footer");
@@ -16,35 +17,71 @@ function TurtleMascot() {
     const lane = wrap?.parentElement;
     if (!wrap || !lane) return;
 
-    let hasWoken = false;
+    let walking = false;
+    let arrived = false;
     let stepInterval: ReturnType<typeof setInterval> | null = null;
+    let walkTimeout: ReturnType<typeof setTimeout> | null = null;
 
-    const laneWidth = () => lane.clientWidth - wrap.offsetWidth;
+    const laneWidth = () => Math.max(0, lane.clientWidth - wrap.offsetWidth);
 
-    const isAtBottom = () => {
-      const doc = document.documentElement;
-      const scrollTop = doc.scrollTop || document.body.scrollTop;
-      const scrollHeight = doc.scrollHeight - doc.clientHeight;
-      return scrollHeight <= 0 || scrollTop >= scrollHeight - BOTTOM_THRESHOLD_PX;
-    };
+    const reducedMotion = () =>
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const wakeUpAndWalk = () => {
-      if (hasWoken) return;
-      hasWoken = true;
+    const startLegs = () => {
+      if (stepInterval) return;
       stepInterval = setInterval(() => {
         wrap.classList.toggle("step-a");
         wrap.classList.toggle("step-b");
       }, STEP_INTERVAL_MS);
-      wrap.style.left = `${laneWidth()}px`;
     };
 
-    const onScroll = () => {
-      if (!hasWoken && isAtBottom()) wakeUpAndWalk();
+    const stopLegs = () => {
+      if (stepInterval) {
+        clearInterval(stepInterval);
+        stepInterval = null;
+      }
+      wrap.classList.remove("step-a", "step-b");
+    };
+
+    // Walk from the left edge to the right edge, animating legs along the way.
+    const walk = () => {
+      if (walking || arrived) return;
+      walking = true;
+      // Snap to the start with no transition, force a reflow, then let the
+      // CSS `transition: left` carry it across so the walk is always visible.
+      wrap.style.transition = "none";
+      wrap.style.left = "0px";
+      void wrap.offsetWidth;
+      wrap.style.transition = "";
+      // Under reduced-motion the CSS makes the move instant; don't animate legs.
+      if (!reducedMotion()) startLegs();
+      requestAnimationFrame(() => {
+        wrap.style.left = `${laneWidth()}px`;
+      });
+      walkTimeout = setTimeout(() => {
+        stopLegs();
+        walking = false;
+        arrived = true;
+      }, WALK_MS + 100);
+    };
+
+    // When the user scrolls back up, reset so the walk can play again next time.
+    const reset = () => {
+      if (walkTimeout) {
+        clearTimeout(walkTimeout);
+        walkTimeout = null;
+      }
+      stopLegs();
+      walking = false;
+      arrived = false;
+      wrap.style.transition = "none";
+      wrap.style.left = "0px";
+      void wrap.offsetWidth;
+      wrap.style.transition = "";
     };
 
     const onResize = () => {
-      if (hasWoken) wrap.style.left = `${laneWidth()}px`;
-      onScroll();
+      if (walking || arrived) wrap.style.left = `${laneWidth()}px`;
     };
 
     const hop = () => {
@@ -59,22 +96,35 @@ function TurtleMascot() {
     };
 
     const onDocumentClick = (e: MouseEvent) => {
-      if (!hasWoken) return;
+      if (!walking && !arrived) return;
       const target = e.target as HTMLElement | null;
       if (target?.closest("button, a")) hop();
     };
 
     wrap.style.left = "0px";
-    window.addEventListener("scroll", onScroll, { passive: true });
+
+    // Trigger the walk when the turtle's lane scrolls into view (reliable and
+    // it never fires during initial layout). Replays each time it re-enters.
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) walk();
+          else reset();
+        }
+      },
+      { threshold: 0.6 },
+    );
+    io.observe(lane);
+
     window.addEventListener("resize", onResize);
     document.addEventListener("click", onDocumentClick);
-    onScroll();
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      io.disconnect();
       window.removeEventListener("resize", onResize);
       document.removeEventListener("click", onDocumentClick);
       if (stepInterval) clearInterval(stepInterval);
+      if (walkTimeout) clearTimeout(walkTimeout);
     };
   }, []);
 
