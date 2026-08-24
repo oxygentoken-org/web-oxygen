@@ -4,8 +4,8 @@ import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import "./turtle-mascot.css";
 
-const BOTTOM_THRESHOLD_PX = 8;
 const STEP_INTERVAL_MS = 460;
+// Keep in sync with `transition: left` duration in turtle-mascot.css.
 const WALK_MS = 7000;
 
 function TurtleMascot() {
@@ -24,6 +24,8 @@ function TurtleMascot() {
 
     const laneWidth = () => Math.max(0, lane.clientWidth - wrap.offsetWidth);
 
+    const reducedMotion = () =>
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const startLegs = () => {
       if (stepInterval) return;
@@ -51,7 +53,8 @@ function TurtleMascot() {
       wrap.style.left = "0px";
       void wrap.offsetWidth;
       wrap.style.transition = "";
-      startLegs();
+      // Under reduced-motion the CSS makes the move instant; don't animate legs.
+      if (!reducedMotion()) startLegs();
       requestAnimationFrame(() => {
         wrap.style.left = `${laneWidth()}px`;
       });
