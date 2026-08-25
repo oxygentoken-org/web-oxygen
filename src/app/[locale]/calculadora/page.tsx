@@ -15,7 +15,10 @@ export function generateMetadata({
   return {
     title,
     description,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      languages: { es: "/es/calculadora", en: "/en/calculadora", "x-default": "/es/calculadora" },
+    },
     openGraph: { title, description, url, type: "website" },
   };
 }

@@ -12,7 +12,10 @@ export function generateMetadata({
   return {
     title: copy.title,
     description: copy.intro,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      languages: { es: "/es/privacy", en: "/en/privacy", "x-default": "/es/privacy" },
+    },
     openGraph: { title: copy.title, description: copy.intro, url, type: "website" },
   };
 }
