@@ -17,7 +17,10 @@ export function generateMetadata({
   return {
     title,
     description,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      languages: { es: "/es/whitepaper", en: "/en/whitepaper", "x-default": "/es/whitepaper" },
+    },
     openGraph: { title, description, url, type: "website" },
   };
 }
