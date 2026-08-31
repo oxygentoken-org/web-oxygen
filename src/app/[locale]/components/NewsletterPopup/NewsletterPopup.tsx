@@ -17,6 +17,7 @@ export default function NewsletterPopup() {
 
   const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState("");
+  const [company, setCompany] = useState(""); // honeypot — un humano nunca lo completa
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
 
   useEffect(() => {
@@ -50,7 +51,7 @@ export default function NewsletterPopup() {
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), locale, source: "popup" }),
+        body: JSON.stringify({ email: email.trim(), locale, source: "popup", company }),
       });
       if (!res.ok) throw new Error("request failed");
       setStatus("done");
@@ -82,6 +83,16 @@ export default function NewsletterPopup() {
             <h3 className="newsletterPopupTitle">{t("title")}</h3>
             <p className="newsletterPopupBody">{t("body")}</p>
             <form className="newsletterPopupForm" onSubmit={handleSubmit} noValidate>
+              <input
+                type="text"
+                name="company"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+              />
               <InputWithLabel
                 variant="large"
                 rounded="full"
