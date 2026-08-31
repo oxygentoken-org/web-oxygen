@@ -64,7 +64,7 @@ const Proyectos = () => {
           <ProjectTimeline />
         </div>
       </section>
-      <Footer />
+      <Footer mascot="jaguar" />
     </>
   );
 };
