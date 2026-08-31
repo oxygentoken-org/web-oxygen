@@ -13,8 +13,8 @@ module.exports = {
       full: "9999px",
     },
     fontFamily: {
-      sans: ["Montserrat", "sans-serif"],
-      "dm-sans": ["DM Sans", "sans-serif"],
+      sans: ["var(--montserrat)", "sans-serif"],
+      "dm-sans": ["var(--dm-sans)", "sans-serif"],
     },
     colors: {
       transparent: colors.transparent,

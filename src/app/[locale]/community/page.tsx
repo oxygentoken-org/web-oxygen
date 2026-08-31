@@ -20,19 +20,28 @@ async function getPosts(page: number = 0) {
   }
 }
 
-export const metadata = {
-  title: "Community",
-  description:
-    "News, guides and stories about carbon markets, forest conservation and the Oxygen Token ecosystem.",
-  alternates: { canonical: "/community" },
-  openGraph: {
-    title: "Community",
-    description:
-      "News, guides and stories about carbon markets, forest conservation and the Oxygen Token ecosystem.",
-    url: "/community",
-    type: "website",
-  },
-};
+export function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const isEn = locale === "en";
+  const title = isEn ? "Community" : "Comunidad";
+  const description = isEn
+    ? "News, guides and stories about carbon markets, forest conservation and the Oxygen Token ecosystem."
+    : "Noticias, guías e historias sobre mercados de carbono, conservación de bosques y el ecosistema de Oxygen Token.";
+  const url = `/${locale}/community`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+      languages: { es: "/es/community", en: "/en/community", "x-default": "/es/community" },
+    },
+    openGraph: { title, description, url, type: "website" },
+  };
+}
 
 export default async function SEObot_Blog_Page() {
   const t = await getTranslations("Blog");

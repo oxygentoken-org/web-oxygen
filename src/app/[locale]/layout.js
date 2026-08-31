@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import { Montserrat, DM_Sans } from "next/font/google";
 import RootLayout from "./layout-ga";
 import { Transition_Provider } from "./context/Transition_Context";
 import { AuthProvider } from "./context/Auth_Context";
@@ -12,6 +13,18 @@ import Vercel_Analytics from "./components/Vercel_Analytics/Vercel_Analytics";
 
 const { NextIntlClientProvider } = require("next-intl");
 const { notFound } = require("next/navigation");
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--montserrat",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--dm-sans",
+  display: "swap",
+});
 
 export const metadata = {
   metadataBase: new URL("https://oxygentoken.org"),
@@ -44,7 +57,7 @@ async function LocaleLayout({ children, params: { locale } }) {
   }
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={`${montserrat.variable} ${dmSans.variable}`}>
       <body>
         <script
           type="application/ld+json"

@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: SEObotBlogPostPageProps) {
 
   const title = post.headline;
   const description = post.metaDescription || post.headline;
-  const canonical = `/community/${params.slug}`;
+  const canonical = `/${params.locale}/community/${params.slug}`;
 
   return {
     title,
