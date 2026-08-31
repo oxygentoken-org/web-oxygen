@@ -92,11 +92,29 @@ export class GoogleSheetsService {
     });
   }
 
-  // Appends a newsletter signup to the "Newsletter" tab. Returns false on error
-  // so the caller can respond without throwing.
-  async addNewsletterSubscriber(email: string, source: string = 'footer'): Promise<boolean> {
+  // Appends a newsletter signup to the "Newsletter" tab, unless that email is
+  // already in it — without this check, resubmitting the same form (double
+  // click, incognito, cleared localStorage) added a duplicate row every time
+  // and made the caller re-send the welcome email each time too.
+  // Returns 'new' | 'existing' so the caller can decide whether to (re)send
+  // the welcome email; 'error' on failure so it can respond without throwing.
+  async addNewsletterSubscriber(
+    email: string,
+    source: string = 'footer'
+  ): Promise<'new' | 'existing' | 'error'> {
     try {
       await this.ensureSheetExists('Newsletter', ['Email', 'Date', 'Source']);
+
+      const existing = await this.sheets.spreadsheets.values.get({
+        spreadsheetId: this.spreadsheetId,
+        range: 'Newsletter!A:A',
+      });
+      const rows = existing.data.values || [];
+      const alreadySubscribed = rows
+        .slice(1)
+        .some((row: string[]) => (row[0] || '').trim().toLowerCase() === email);
+      if (alreadySubscribed) return 'existing';
+
       await this.sheets.spreadsheets.values.append({
         spreadsheetId: this.spreadsheetId,
         range: 'Newsletter!A:C',
@@ -104,10 +122,10 @@ export class GoogleSheetsService {
         insertDataOption: 'INSERT_ROWS',
         resource: { values: [[email, new Date().toISOString(), source]] },
       });
-      return true;
+      return 'new';
     } catch (error) {
       console.error('Error adding newsletter subscriber to Google Sheets:', error);
-      return false;
+      return 'error';
     }
   }
 
