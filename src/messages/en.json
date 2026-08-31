@@ -95,7 +95,8 @@
     "joinus-link": "Join Us",
     "news": "Subscribe to our newsletter",
     "news-button": "Send",
-    "turtle-message": "<strong>Turtles aren't pets.</strong> Taking them from the wild to keep at home is one of the reasons the Argentine tortoise (<em>Chelonoidis chilensis</em>) is endangered today."
+    "turtle-message": "<strong>Turtles aren't pets.</strong> Taking them from the wild to keep at home is one of the reasons the Argentine tortoise (<em>Chelonoidis chilensis</em>) is endangered today.",
+    "anteater-message": "<strong>The giant anteater has nearly vanished from Argentina.</strong> Losing native forest wiped out <em>Myrmecophaga tridactyla</em> across most of its historic range — today it survives mainly in places like the Gran Chaco."
   },
   "Blog": {
     "allPosts": "All Posts",

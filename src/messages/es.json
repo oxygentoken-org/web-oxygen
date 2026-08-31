@@ -95,7 +95,8 @@
     "joinus-link": "Unite",
     "news": "Suscribite a nuestro newsletter",
     "news-button": "Enviar",
-    "turtle-message": "<strong>Las tortugas no son mascotas.</strong> Sacarlas del monte para tenerlas en casa es una de las razones por las que hoy la tortuga terrestre argentina (<em>Chelonoidis chilensis</em>) está en peligro de extinción."
+    "turtle-message": "<strong>Las tortugas no son mascotas.</strong> Sacarlas del monte para tenerlas en casa es una de las razones por las que hoy la tortuga terrestre argentina (<em>Chelonoidis chilensis</em>) está en peligro de extinción.",
+    "anteater-message": "<strong>El oso hormiguero gigante casi desapareció de Argentina.</strong> La pérdida de bosque nativo dejó al <em>Myrmecophaga tridactyla</em> extinto en gran parte de su rango histórico — hoy sobrevive sobre todo en zonas como el Gran Chaco."
   },
   "Blog": {
     "searchResults": "Resultados de búsqueda",

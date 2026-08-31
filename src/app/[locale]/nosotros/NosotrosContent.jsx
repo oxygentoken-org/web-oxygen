@@ -203,7 +203,7 @@ const NosotrosContent = () => {
           <h3>{usIdioms("joinus-title")}</h3>
         </div>
       </section>
-      <Footer />
+      <Footer mascot="anteater" />
     </>
   );
 };
