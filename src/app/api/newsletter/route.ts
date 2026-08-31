@@ -21,10 +21,23 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Could not save subscription' }, { status: 500 });
     }
 
-    // No bloquean la respuesta ni fallan la suscripción si algo de esto falla
-    // (ej. dominio sin verificar todavía, o falta la key full-access).
-    sendWelcomeEmail(normalizedEmail, typeof locale === 'string' ? locale : 'es').catch(() => {});
-    addToNewsletterAudience(normalizedEmail).catch(() => {});
+    // Se esperan (no se lanzan sin await) porque en el runtime serverless de Vercel
+    // una promesa disparada sin await puede quedar congelada/matada apenas se manda
+    // la respuesta, antes de completarse — el mail de bienvenida y el alta en la
+    // Audience simplemente no pasarían, sin ningún error visible. Igual no bloquean
+    // ni fallan la suscripción si algo de esto falla (ej. dominio sin verificar
+    // todavía, o falta la key full-access): el Sheet ya quedó guardado arriba, que
+    // es la fuente de verdad de "está suscripto".
+    const [welcomeResult, audienceResult] = await Promise.allSettled([
+      sendWelcomeEmail(normalizedEmail, typeof locale === 'string' ? locale : 'es'),
+      addToNewsletterAudience(normalizedEmail),
+    ]);
+    if (welcomeResult.status === 'rejected' || welcomeResult.value === false) {
+      console.error('Newsletter API: welcome email failed for', normalizedEmail);
+    }
+    if (audienceResult.status === 'rejected' || audienceResult.value === false) {
+      console.error('Newsletter API: audience add failed for', normalizedEmail);
+    }
 
     return NextResponse.json({ message: 'subscribed' });
   } catch (error) {
