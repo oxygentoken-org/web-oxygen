@@ -47,13 +47,30 @@ function boletin1Html() {
     .team-photo { width:64px; height:64px; border-radius:50%; object-fit:cover; border:2px solid #c9a227; display:block; margin:0 auto 8px; }
     .team-name { font-family:-apple-system,sans-serif; font-size:12px; font-weight:700; color:#241c0f; }
     .team-role { font-family:-apple-system,sans-serif; font-size:10.5px; color:#8a7f63; }
+    /* Clientes de mail sin soporte para @keyframes (Outlook desktop, muchos webmail) simplemente
+       ignoran esto y se quedan con el gradient estático de más abajo — por eso el degradé base
+       va siempre inline, esto es una mejora progresiva, no la única fuente de color. Un segundo
+       "layer" de sombra se desliza de derecha a izquierda por encima del degradé fijo. */
+    @keyframes boletinHeaderShift {
+      0%   { background-position: 130% 0, 0 0; }
+      50%  { background-position: -30% 0, 0 0; }
+      100% { background-position: 130% 0, 0 0; }
+    }
+    .boletinHeaderAnim {
+      background-image:
+        linear-gradient(100deg, transparent 35%, rgba(0,0,0,0.22) 50%, transparent 65%),
+        linear-gradient(135deg,#1d3a1c 0%,#16220f 30%,#3a2f13 65%,#5c3a17 100%) !important;
+      background-size: 260% 100%, 100% 100% !important;
+      background-position: 130% 0, 0 0;
+      animation: boletinHeaderShift 9s ease-in-out infinite;
+    }
   </style>
   </head>
   <body style="margin:0;padding:0;background:#ece2c4;font-family:Georgia,'Times New Roman',serif;">
     <div style="max-width:600px;margin:28px auto;background:#fbf4de;border-radius:36px;overflow:hidden;box-shadow:0 20px 44px rgba(35,26,10,0.16);">
 
       <!-- header -->
-      <div style="position:relative;background:linear-gradient(135deg,#1d3a1c 0%,#16220f 30%,#3a2f13 65%,#5c3a17 100%);padding:0;overflow:hidden;">
+      <div class="boletinHeaderAnim" style="position:relative;background:linear-gradient(135deg,#1d3a1c 0%,#16220f 30%,#3a2f13 65%,#5c3a17 100%);padding:0;overflow:hidden;">
         <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 12% 25%, rgba(201,162,39,0.20) 0, transparent 32%),radial-gradient(circle at 88% 15%, rgba(181,80,44,0.18) 0, transparent 30%);"></div>
         <table role="presentation" width="100%" style="position:relative;">
           <tr><td style="padding:44px 30px 32px;text-align:center;">
