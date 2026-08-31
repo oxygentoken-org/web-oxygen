@@ -10,6 +10,8 @@ import {
 import { FaLinkedinIn } from "react-icons/fa6";
 import NewsletterForm from "./NewsletterForm";
 import TurtleMascot from "../TurtleMascot/TurtleMascot";
+import AnteaterMascot from "../AnteaterMascot/AnteaterMascot";
+import JaguarMascot from "../JaguarMascot/JaguarMascot";
 
 const socials = [
   {
@@ -51,8 +53,23 @@ const legal = [
   { label: "Privacy", href: "/privacy" },
 ] as const;
 
-function Footer() {
+// La tortuga vive en la home; el resto de las páginas va mostrando otros
+// animales del Gran Chaco a medida que se van sumando.
+const FOOTER_MASCOTS = {
+  turtle: TurtleMascot,
+  anteater: AnteaterMascot,
+  jaguar: JaguarMascot,
+} as const;
+
+type FooterMascotSpecies = keyof typeof FOOTER_MASCOTS;
+
+interface FooterProps {
+  mascot?: FooterMascotSpecies;
+}
+
+function Footer({ mascot = "turtle" }: FooterProps) {
   const t = useTranslations("Footer");
+  const Mascot = FOOTER_MASCOTS[mascot];
 
   return (
     <section className="bg-black text-white">
@@ -114,7 +131,7 @@ function Footer() {
           </div>
         </div>
 
-        <TurtleMascot />
+        <Mascot />
 
         <div className="mt-10 pt-6 border-t border-white/10 text-sm text-white/70 flex items-center justify-between">
           <span>© {new Date().getFullYear()} Oxygen. All rights reserved.</span>
