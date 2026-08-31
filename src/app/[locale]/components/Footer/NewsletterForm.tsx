@@ -28,6 +28,7 @@ export default function NewsletterForm() {
   const c = copy[locale as keyof typeof copy] ?? copy.en;
 
   const [email, setEmail] = useState("");
+  const [company, setCompany] = useState(""); // honeypot — un humano nunca lo completa
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
   const [message, setMessage] = useState("");
 
@@ -44,7 +45,7 @@ export default function NewsletterForm() {
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim() }),
+        body: JSON.stringify({ email: email.trim(), locale, source: "footer", company }),
       });
       if (!res.ok) throw new Error("request failed");
       setStatus("done");
@@ -66,6 +67,16 @@ export default function NewsletterForm() {
 
   return (
     <form className="flex flex-col gap-2" onSubmit={handleSubmit} noValidate>
+      <input
+        type="text"
+        name="company"
+        value={company}
+        onChange={(e) => setCompany(e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+      />
       <div className="flex items-center gap-3">
         <InputWithLabel
           variant="large"

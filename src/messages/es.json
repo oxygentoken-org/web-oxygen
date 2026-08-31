@@ -805,5 +805,15 @@
     "error-already-used": "Este código ya fue utilizado",
     "error-expired": "Este código ha expirado",
     "error-generic": "Ocurrió un error. Por favor intentá de nuevo."
+  },
+  "NewsletterPopup": {
+    "title": "Sumate a la comunidad Oxygen",
+    "body": "Recibí novedades sobre nuestros proyectos de conservación y reforestación en el Gran Chaco.",
+    "placeholder": "Tu email",
+    "cta": "Suscribirme",
+    "sending": "Enviando...",
+    "thanks": "¡Gracias! Ya estás suscripto.",
+    "error": "Ingresá un email válido.",
+    "close": "Cerrar"
   }
 }

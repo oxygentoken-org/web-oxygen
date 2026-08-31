@@ -806,5 +806,15 @@
     "error-already-used": "This code has already been used",
     "error-expired": "This code has expired",
     "error-generic": "Something went wrong. Please try again."
+  },
+  "NewsletterPopup": {
+    "title": "Join the Oxygen community",
+    "body": "Get updates on our conservation and reforestation projects in the Gran Chaco.",
+    "placeholder": "Your email",
+    "cta": "Subscribe",
+    "sending": "Sending...",
+    "thanks": "Thanks! You're subscribed.",
+    "error": "Enter a valid email.",
+    "close": "Close"
   }
 }

@@ -22,10 +22,13 @@ const Partnerships = dynamic(() => import("../Partnerships/Partnerships"), { ssr
 const Quote = dynamic(() => import("./Quote").then((m) => m.Quote), { ssr: true });
 const Footer = dynamic(() => import("../Footer/Footer"), { ssr: true });
 const WhatsApp_Button = dynamic(() => import("../WhatsApp/WhatsApp_Button"), { ssr: true });
+const NewsletterPopup = dynamic(() => import("../NewsletterPopup/NewsletterPopup"), { ssr: false });
 
 const MainPage = () => {
   return (
     <>
+      <NewsletterPopup />
+
       <PreLanding />
 
       <BackgroundVideo />
