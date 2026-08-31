@@ -4,18 +4,24 @@ import { sendWelcomeEmail, addToNewsletterAudience } from '../../../utils/email'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Los dos puntos de entrada reales del sitio; cualquier otro valor (o ausente)
+// cae en 'footer' — antes el "Source" del Sheet quedaba siempre en 'footer'
+// sin importar de dónde viniera la suscripción, porque nada mandaba este campo.
+const VALID_SOURCES = ['footer', 'popup'] as const;
+
 export async function POST(request: NextRequest) {
   try {
-    const { email, locale } = await request.json();
+    const { email, locale, source } = await request.json();
 
     if (!email || typeof email !== 'string' || !EMAIL_RE.test(email.trim())) {
       return NextResponse.json({ error: 'Invalid email' }, { status: 400 });
     }
 
     const normalizedEmail = email.trim().toLowerCase();
+    const normalizedSource = VALID_SOURCES.includes(source) ? source : 'footer';
 
     const service = new GoogleSheetsService();
-    const subscriberStatus = await service.addNewsletterSubscriber(normalizedEmail);
+    const subscriberStatus = await service.addNewsletterSubscriber(normalizedEmail, normalizedSource);
 
     if (subscriberStatus === 'error') {
       return NextResponse.json({ error: 'Could not save subscription' }, { status: 500 });

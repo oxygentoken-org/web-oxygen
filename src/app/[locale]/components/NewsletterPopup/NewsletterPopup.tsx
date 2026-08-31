@@ -50,7 +50,7 @@ export default function NewsletterPopup() {
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), locale }),
+        body: JSON.stringify({ email: email.trim(), locale, source: "popup" }),
       });
       if (!res.ok) throw new Error("request failed");
       setStatus("done");
